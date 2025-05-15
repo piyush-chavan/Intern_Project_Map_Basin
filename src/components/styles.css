@@ -1,0 +1,79 @@
+.Navbar{
+    position: sticky;
+    top: 0;
+    display: flex;
+    background-color: rgb(2, 45, 69);
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 50px ;
+}
+.NavButtons{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.NavLink{
+    color: white;
+    margin: 2px 20px;
+    text-decoration: none;
+    &:hover{
+        font-weight: bold;
+    }
+
+}
+.NavTitleLink{
+    color: white;
+    font-size: 2rem;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+.title{
+    font-size: 2rem;
+}
+.landingPageContainer{
+    text-align: center;
+    margin: 20px;
+    padding:20px 5%;
+}
+.normalText{
+    font-size: 18px;
+    text-align: justify;
+}
+.mapCard{
+    max-width: 48%;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    box-shadow: 6px 6px 6px darkslategray;
+}
+.title_2{
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.devContainer{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+.devBox{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.imgBox{
+    max-width: 300px;
+}
+.leaflet-container{
+    height: 500px;
+    width: 75%;
+    margin-inline: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    border: 2px solid purple;
+    box-shadow: 6px 6px 20px darkslategrey;
+    margin-bottom: 50px;
+}
