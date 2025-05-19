@@ -25,8 +25,7 @@ function App() {
           <Route path='/publications' element={<Publication />} />
           <Route path='/team' element={<Team />} />
           <Route path='/outreach' element={<Outreach />} />
-          <Route path='/graph' element={<ExcelChartFromPath/>} />
-
+          {/* <Route path='/graph' element={<ExcelChartFromPath fileUrl={excelfile} />} /> */}
         </Routes>
 
       </Router>

@@ -44,6 +44,9 @@
 }
 .NavTitle{
     text-align: start;
+    border-bottom: 2px solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 
 }
 .title{
@@ -135,9 +138,20 @@
     border-radius: 20px;
 }
 .memberbox{
-    height: 300px;
+    height: 370px;
     width: 250px;
+    margin: 0 20px 40px 20px;
     box-shadow: 0 0 10px darkslategrey;
     border-radius: 20px;
-
+    padding-bottom: 20px;
+}
+.memberimg{
+    max-width: 80%;
+    object-fit: contain;
+    margin: 10px;
+    max-height: 100%;
+    border-radius: 10px;
+}
+.memimgbox{
+    height: 200px;
 }
