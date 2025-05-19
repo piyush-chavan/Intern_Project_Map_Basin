@@ -1,0 +1,46 @@
+import React from 'react'
+import './styles.css'
+
+export default function Footer() {
+    return (
+        <div>
+            <div className='devContainer'>
+                <br />
+                <p className='title_2'>Developed By</p>
+                <div className='devBox'>
+                    <div className='imgBox'>
+                        <img src={require("../assets/logos/iitr_175yrs_logo.png")} alt="" style={{ maxWidth: '100%' }} />
+                    </div>
+                    <div className='imgBox'>
+                        <img src={require("../assets/logos/nrf_logo.png")} alt="" style={{ maxWidth: '70%' }} />
+                    </div>
+                </div>
+            </div>
+            <div style={{ width: '100vw', padding: '30px 5%', backgroundColor: 'var(--primary)', textAlign: 'start' }}>
+                <p className='title_2' style={{ fontSize: '1.5rem' }}>
+                    <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" />
+                    Water Extremes Research Group : Web tool for Design Flood</p>
+                <div style={{display:'flex'}}>
+
+                    <div style={{flex:'1'}}>
+
+                        <p className='title_2'> <i class="fa-solid fa-location-dot"></i> Address</p>
+                        <p className='secondaryText'>Department of Civil Engineering <br />
+                            Indian Institute of Technology, Roorkee <br />
+                            Roorkee-247667 Distt: Haridwar <br />
+                            Uttarakhand, INDIA</p>
+                            <br />
+                        <p className='title_2'> <i class="fa-solid fa-phone"></i> Contact</p>
+                        <p className='secondaryText'>Tel: +91-1332-284319, 285219 <br />
+                            Fax: +91-1332-275568 <br />
+                            Email: ce@iitr.ac.in</p>
+                    </div>
+                    <div style={{flex:'2'}}>
+                        <img style={{maxWidth:'100%',borderRadius:'20px',boxShadow:'0 0 10px grey'}} src={require("../assets/images/ce_iitr.jpg")} alt="" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    )
+}

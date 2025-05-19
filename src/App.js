@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import MapComponent from './components/MapComponent';
+import Contact from './components/Contact';
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Publication from './components/Publication';
+import Team from './components/Team';
+import Outreach from './components/Outreach';
+import Project from './components/Project';
+import Graph from './components/Graph';
+import ExcelChartFromPath from './components/Excel';
 
 function App() {
-  const [page,setPage] = useState(0)
   return (
     <div className="App">
-      <button onClick={()=>setPage(!page)} className='btn btn-warning' style={{position:'fixed',top:'100px',right:'30px'}}>Change Page {page}</button>
-      <Navbar/>
-      
-      {
-        page?
-        <MapComponent/>
-        :
-        <LandingPage/>
-      }
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='home' element={<MapComponent />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/project' element={<Project/>} />
+          <Route path='/publications' element={<Publication />} />
+          <Route path='/team' element={<Team />} />
+          <Route path='/outreach' element={<Outreach />} />
+          <Route path='/graph' element={<ExcelChartFromPath/>} />
+
+        </Routes>
+
+      </Router>
+
+
     </div>
   );
 }

@@ -1,33 +1,50 @@
+:root {
+ --background: #FFF5E4;     /* Soft Butter Yellow */
+--primary: #FEBA17;        /* Warm Amber */
+--secondary: #F8F4E1;      /* Vibrant Orange */
+--accent: #4E1F00;         /* Deep Orange */
+--text: #4E342E;           /* Rich Brown */
+
+}
 .Navbar{
     position: sticky;
+    width: 100vw;
     top: 0;
-    display: flex;
-    background-color: rgb(2, 45, 69);
-    color: white;
-    justify-content: space-between;
-    align-items: center;
+    z-index: 5000;
+    /* display: flex; */
+    background-color: var(--primary);  
+    /* //rgb(2, 45, 69) */
+    /* color: white; */
+    color: var(--text-color);
+    /* justify-content: space-between; */
+    /* align-items: center; */
     padding:10px 50px ;
 }
-.NavButtons{
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 .NavLink{
-    color: white;
+    color: var(--accent);
+    display:inline-block;
+    height: 100%;
     margin: 2px 20px;
     text-decoration: none;
+    height: 20px;
+    transition: all 0.3s ease;
     &:hover{
-        font-weight: bold;
+        font-size: 18px;
+        color: #74512D;
     }
 
 }
 .NavTitleLink{
-    color: white;
-    font-size: 2rem;
+    color: var(--accent);
+    text-align: start;
+    font-size: 1.5rem;
+    font-weight: 600;
     padding: 5px 10px;
     text-decoration: none;
+}
+.NavTitle{
+    text-align: start;
+
 }
 .title{
     font-size: 2rem;
@@ -41,22 +58,32 @@
     font-size: 18px;
     text-align: justify;
 }
+.secondaryText{
+    font-size: 16px;
+    text-align: justify;
+    font-weight: 500;
+}
 .mapCard{
     max-width: 48%;
     border-radius: 20px;
-    padding-bottom: 20px;
-    box-shadow: 6px 6px 6px darkslategray;
+    padding: 20px;
+    box-shadow: 0 0 10px darkslategray;
 }
 .title_2{
     font-size: 1.5rem;
-    font-weight: bolder;
+    font-weight: 600;
 }
 .devContainer{
-    margin-top: 100px;
+    border-top: 2px solid;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
+    background-color: var(--secondary);
 
 
+}
+.NavLinkBox{
+    display: flex;
 }
 .devBox{
     display: flex;
@@ -65,15 +92,52 @@
     align-items: center;
 }
 .imgBox{
-    max-width: 300px;
+    max-width: 400px;
 }
 .leaflet-container{
     height: 500px;
-    width: 75%;
+    width: 60%;
     margin-inline: auto;
     margin-top: 50px;
     border-radius: 20px;
     border: 2px solid purple;
     box-shadow: 6px 6px 20px darkslategrey;
     margin-bottom: 50px;
+}
+.menuContainer{
+    height: 80vh;
+    width: 20%;
+    padding: 50px 30px;
+    background-color: var(--background);
+    border-bottom-right-radius: 20px;
+    box-shadow: 5px 5px 10px grey;
+}
+
+.dataContainer{
+    height: 90vh;
+    top:5vh;
+    left: 15vw;
+    z-index: 10000;
+    box-shadow: 0 0 20px darkslategrey;
+    position: fixed;
+    border-radius: 20px;
+    width: 70vw;
+    padding: 30px 30px;
+    background-color: lightgoldenrodyellow;
+}
+.contactFormContainer{
+    width: 50%;
+    margin: auto;
+    padding: 30px;
+    margin-top: 50px;
+    background-color: var(--secondary);
+    box-shadow: 0 0 10px darkslategrey;
+    border-radius: 20px;
+}
+.memberbox{
+    height: 300px;
+    width: 250px;
+    box-shadow: 0 0 10px darkslategrey;
+    border-radius: 20px;
+
 }
