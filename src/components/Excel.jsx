@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, Legend,
-  CartesianGrid, ResponsiveContainer, Area ,Label
+  CartesianGrid, ResponsiveContainer, Area, Label,
+  AreaChart,
+  ComposedChart
 } from 'recharts';
 
 function ExcelChartFromFile({ fileUrl }) {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const loadExcel = async () => {
-      const response = await fetch(fileUrl);
+  const loadExcel = async (fileUrl) => {
+    const response = await fetch(fileUrl);
+    if (!response.ok) {
+      // throw new Error(`Failed to fetch Excel file: ${response.statusText}`);
+      setData(null)
+    }
+    else {
       const arrayBuffer = await response.arrayBuffer();
 
       const workbook = XLSX.read(arrayBuffer, { type: 'array' });
@@ -21,7 +27,7 @@ function ExcelChartFromFile({ fileUrl }) {
       const rows = rawData.slice(1);
 
       const formatted = rows.map((row, index) => {
-        const entry = { x: index + 1 };
+        const entry = { x: index + 2 };
         headers.forEach((header, i) => {
           const value = parseFloat(row[i]);
           entry[header] = isNaN(value) ? null : value;
@@ -38,45 +44,37 @@ function ExcelChartFromFile({ fileUrl }) {
       });
 
       setData(formatted);
-    };
+    }
+  };
+  useEffect(() => {
 
-    loadExcel();
+    loadExcel(fileUrl);
   }, [fileUrl]);
   const customLegendNames = {
-  A: 'Mean',
-  B: '5 % Cl',
-  C: '95% Cl',
-  D: 'Ensemble',
-  E: 'Ensemble',
-};
+    A: 'Mean',
+    B: '5 % Cl',
+    C: '95% Cl',
+    D: 'Ensemble',
+    E: 'Ensemble',
+  };
 
   return (
     <div style={{ padding: 20 }}>
       {data.length > 0 && (
-        <ResponsiveContainer width="100%" height={400} style={{padding:'20px',paddingBottom:"30px"}} >
-          <LineChart data={data}>
+        <ResponsiveContainer width="100%" height={400} style={{ backgroundColor: 'white' }} >
+          <ComposedChart data={data} style={{ padding: '40px' }}>
             <CartesianGrid stroke="#ccc" />
             <XAxis dataKey="x" >
-              <Label value="Return Period" offset={-30} position="insideBottom" />
+              <Label value="Return Period" offset={-20} position="insideBottom" />
             </XAxis>
             <YAxis >
-              <Label value="Return Level" offset={-10} angle={-90} position="insideLeft" />
+              <Label value="Return Level" offset={-20} angle={-90} position="insideLeft" />
             </YAxis>
             <Tooltip />
-            <Legend />
+            <Legend
+            // payload={payload.filter(entry => entry.value !== "E_minus_D")}
+            />
 
-            {/* Normal lines */}
-            {["A", "B", "C"].map((key, idx) =>
-              data[0][key] != null ? (
-                <Line
-                  key={key}
-                  type="monotone"
-                  dataKey={key}
-                  name={customLegendNames[key] || key}
-                  stroke={['#8884d8', '#82ca9d', '#ffc658'][idx]}
-                />
-              ) : null
-            )}
 
             {/* Area stack: bottom at D, top at E (as E_minus_D) */}
             <Area
@@ -90,17 +88,33 @@ function ExcelChartFromFile({ fileUrl }) {
               type="monotone"
               dataKey="E_minus_D"
               stroke="none"
-              fill="#ff7300"
+              fill="orange"
               fillOpacity={0.3}
               stackId="1"
+              legendType="none"
             />
 
             {/* Optional visible lines for D and E */}
-            <Line name={customLegendNames["D"]||"D"} type="monotone" dataKey="D" stroke="#d62728" />
-            <Line name={customLegendNames["E"]||"E"} type="monotone" dataKey="E" stroke="#ff7300" />
-          </LineChart>
+            <Line name={customLegendNames["D"] || "D"} type="monotone" dataKey="D" stroke="#d62728" dot={false} activeDot={{ r: 6 }} strokeWidth={3} />
+            <Line name={customLegendNames["E"] || "E"} type="monotone" dataKey="E" stroke="#ff7300" dot={false} activeDot={{ r: 6 }} strokeWidth={3} />
+            {/* Normal lines */}
+            {["A", "B", "C"].map((key, idx) =>
+              data[0][key] != null ? (
+                <Line
+                  key={key}
+                  type="monotone"
+                  dataKey={key}
+                  name={customLegendNames[key] || key}
+                  stroke={['#8884d8', '#82ca9d', '#ffc658'][idx]}
+                  dot={false} activeDot={{ r: 6 }}
+                  strokeWidth={3}
+                />
+              ) : null
+            )}
+          </ComposedChart>
         </ResponsiveContainer>
       )}
+      {data.length === 0 ? <p>This graph is not available in database </p> : null}
     </div>
   );
 }

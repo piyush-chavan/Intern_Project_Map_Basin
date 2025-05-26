@@ -117,8 +117,8 @@
 }
 
 .dataContainer{
-    height: 90vh;
-    top:5vh;
+    height: 95vh;
+    top:1vh;
     left: 15vw;
     z-index: 10000;
     box-shadow: 0 0 20px darkslategrey;

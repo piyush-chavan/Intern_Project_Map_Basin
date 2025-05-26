@@ -11,6 +11,7 @@ import Outreach from './components/Outreach';
 import Project from './components/Project';
 import Graph from './components/Graph';
 import ExcelChartFromPath from './components/Excel';
+import ExcelChartFromFile from './components/Excel';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path='/publications' element={<Publication />} />
           <Route path='/team' element={<Team />} />
           <Route path='/outreach' element={<Outreach />} />
-          {/* <Route path='/graph' element={<ExcelChartFromPath fileUrl={excelfile} />} /> */}
+          <Route path='/graph' element={<ExcelChartFromFile fileUrl={require('./assets/data.xlsx')}/>} />
         </Routes>
 
       </Router>

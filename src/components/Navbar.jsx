@@ -20,7 +20,7 @@ export default function Navbar() {
           <Link to="/publications" className="NavLink">Publications</Link>
           <Link to="https://faculty.iitr.ac.in/~vinnarasi/" target='_blank' className='NavLink' >Research Group</Link>
           <Link to="/contact" className="NavLink">Help</Link>
-          {/* <Link to="/graph" className="NavLink">Graph</Link> */}
+          <Link to="/graph" className="NavLink">Graph</Link>
         </div>
         <div>
           <button className='btn btn-info' style={{ marginRight: 'auto' }}> <i class="fa-solid fa-right-from-bracket"></i> LogOut</button>

@@ -11,7 +11,8 @@ import shp from 'shpjs';
 import { GeoJSON } from 'react-leaflet';
 import { NarmadaGeoJson } from './output (1)/NarmadaGeoJson.js'
 import { basins } from './basins.js'
-import ExcelChartFromPath from './Excel.jsx'
+import ExcelChartFromFile from './Excel.jsx'
+import {indisGeojson} from './output (1)/india_st.js'
 
 const keralaGeoJson = {
   "type": "Feature",
@@ -155,6 +156,7 @@ export default function MapComponent() {
   const [stationShape, setStationShape] = useState(null)
   const [mode, setMode] = useState("State")
   const [mapurl, setMapurl] = useState(0)
+  const [zoom,setZoom] = useState(5)
 
 
   const handleStationPointClick = (station) => {
@@ -168,6 +170,7 @@ export default function MapComponent() {
     setState(text)
     const currentState = indianStates.filter((item) => item.name === text);
     setCenter([currentState[0].latitude, currentState[0].longitude])
+    setZoom(6)
   };
   const handleBasinChange = (event) => {
     const value = event.target.value;
@@ -187,6 +190,7 @@ export default function MapComponent() {
       setStation(text.name);
       setStationShape(text.geoJson);
       setCenter(point.position)
+      setZoom(9)
     }
     const currentStation = NarmadaStations.filter((item) => item.name === text);
   };
@@ -267,21 +271,18 @@ export default function MapComponent() {
             url={mapBackgrounds[mapurl]}
           />
           {/* <ShapefileLayer shapefileUrl={'./godavari_shapefile.zip'} /> */}
+          <GeoJSON data={indisGeojson} style={{ color: 'green', weight: 2 }} />
           {modeshape && <GeoJSON key={basin} data={modeshape} style={{ color: 'purple', weight: 2 }} />}
           {/* {stationShape && <GeoJSON key={station} data={stationShape} style={{ color: 'green', weight: 2 }} />} */}
           <ZoomToLayer geojson={modeshape} />
-          <ChangeCenter center={center} zoom={9} />
+          <ChangeCenter center={center} zoom={zoom} />
           <ZoomControlledDots coordinates={points} clickhandle={handleStationPointClick} />
-          <Marker position={[20.5937, 78.9629]} >
-            <Popup>
-              Simple popup
-            </Popup>
-          </Marker>
-          {cities.map((city, idx) => (
+          
+          {/* {cities.map((city, idx) => (
             <Marker key={idx} position={[city.lat, city.lng]}>
               <Popup>{city.name}</Popup>
             </Marker>
-          ))}
+          ))} */}
         </MapContainer>
         <div className='dataContainer' style={popup ? null : { display: 'none' }} >
           <i onClick={() => setPopup(false)} style={{ position: 'absolute', top: '20px', right: '20px', fontSize: '30px', cursor: 'pointer' }} class="fa-solid fa-xmark"></i>
@@ -343,15 +344,15 @@ export default function MapComponent() {
                   </li>
                 </ul>:null}
 
-                {plot && univariate === "Univariate"&&plotNum===1 ?
+                {plot ?
                   <>
                     {/* {stationary}
                     {univariate}
                     {plotNum} */}
 
-                    <ExcelChartFromPath fileUrl={require('../assets/data.xlsx')} />
+                    <ExcelChartFromFile fileUrl={plot} />
 
-                    {/* <p>{plot}</p> */}
+                    <p>{plot}</p>
                   </>
                   : null}
               </>
