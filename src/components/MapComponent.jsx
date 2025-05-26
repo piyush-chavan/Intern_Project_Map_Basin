@@ -12,7 +12,7 @@ import { GeoJSON } from 'react-leaflet';
 import { NarmadaGeoJson } from './output (1)/NarmadaGeoJson.js'
 import { basins } from './basins.js'
 import ExcelChartFromFile from './Excel.jsx'
-import {indisGeojson} from './output (1)/india_st.js'
+import { indisGeojson } from './output (1)/india_st.js'
 
 const keralaGeoJson = {
   "type": "Feature",
@@ -123,7 +123,7 @@ export default function MapComponent() {
       position: [22.4916, 76.9936]
     },
     {
-      name: "Madleshwar",
+      name: "Mandleshwar",
       position: [22.1684, 80.6234]
     },
     {
@@ -145,10 +145,10 @@ export default function MapComponent() {
 
   const [state, setState] = useState('');
   const [basin, setBasin] = useState('');
-  const [station, setStation] = useState('');
+  const [station, setStation] = useState('Mohgaon');
   const [plot, setPlot] = useState('');
   const [stationary, setStationary] = useState("Stationary");
-  const [or,setOr] = useState("or")
+  const [or, setOr] = useState("or")
   const [univariate, setUnivariate] = useState("Univariate");
   const [plotNum, setPlotNum] = useState(1);
   const [popup, setPopup] = useState(false)
@@ -156,7 +156,8 @@ export default function MapComponent() {
   const [stationShape, setStationShape] = useState(null)
   const [mode, setMode] = useState("State")
   const [mapurl, setMapurl] = useState(0)
-  const [zoom,setZoom] = useState(5)
+  const [zoom, setZoom] = useState(5)
+  const [show, setShow] = useState(false);
 
 
   const handleStationPointClick = (station) => {
@@ -195,8 +196,13 @@ export default function MapComponent() {
     const currentStation = NarmadaStations.filter((item) => item.name === text);
   };
   useEffect(() => {
-    setPlot(`/graph_xl_files/${station}_${stationary}_${univariate}_${plotNum}.xlsx`)
-  }, [station, stationary, univariate, plotNum])
+    if (univariate === "Univariate") {
+      setPlot(`/graph_xl_files/${station}_${univariate}_${stationary}_${plotNum}.xlsx`)
+    }
+    else {
+      setPlot(`/graph_xl_files/${station}_${or}_${univariate}_${plotNum}.xlsx`)
+    }
+  }, [station, stationary, or, univariate, plotNum])
 
   return (
     <>
@@ -277,7 +283,7 @@ export default function MapComponent() {
           <ZoomToLayer geojson={modeshape} />
           <ChangeCenter center={center} zoom={zoom} />
           <ZoomControlledDots coordinates={points} clickhandle={handleStationPointClick} />
-          
+
           {/* {cities.map((city, idx) => (
             <Marker key={idx} position={[city.lat, city.lng]}>
               <Popup>{city.name}</Popup>
@@ -286,63 +292,92 @@ export default function MapComponent() {
         </MapContainer>
         <div className='dataContainer' style={popup ? null : { display: 'none' }} >
           <i onClick={() => setPopup(false)} style={{ position: 'absolute', top: '20px', right: '20px', fontSize: '30px', cursor: 'pointer' }} class="fa-solid fa-xmark"></i>
-          <p style={{ fontSize: "26px", textAlign: "start", fontWeight: "bolder" }}>{station}</p>
+          <p style={{ fontSize: "26px", textAlign: "start", fontWeight: "bolder" }}>{station === 'Madleshwar' ? "Mandleshwar" : station}</p>
+          <div style={{ position: 'absolute',top:200,right:60, display: 'inline-block' }}>
+            <span
+              onMouseEnter={() => setShow(true)}
+              onMouseLeave={() => setShow(false)}
+              style={{ cursor: 'pointer', fontSize: '20px' }}
+            >
+              <i class="fa-solid fa-circle-info"></i>
+            </span>
+
+            {show && (
+              <div style={{
+                position: 'absolute',
+                top: '120%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                backgroundColor: '#333',
+                color: '#fff',
+                padding: '6px 10px',
+                borderRadius: '4px',
+                fontSize: '12px',
+                whiteSpace: 'nowrap',
+                zIndex: 100
+              }}>
+                RL : Return Level <br />
+                RP : Return Period <br />
+                CI : Confidence Interval <br />
+              </div>
+            )}
+          </div>
           {
             station ?
               <>
                 <ul class="nav nav-underline">
                   <li class="nav-item">
-                    <a class={univariate === "Univariate" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setUnivariate("Univariate")} href="#">Univariate</a>
+                    <a class={univariate === "Univariate" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => { setUnivariate("Univariate"); setStationary("Stationary") }} href="#">Univariate</a>
                   </li>
                   <li class="nav-item">
-                    <a class={univariate === "Bivariate" ? "nav-link active" : "nav-link"} onClick={() => setUnivariate("Bivariate")} href="#">Bivariate</a>
+                    <a class={univariate === "Bivariate" ? "nav-link active" : "nav-link"} onClick={() => { setUnivariate("Bivariate"); setOr("or") }} href="#">Bivariate</a>
                   </li>
                 </ul>
-                { univariate==="Univariate"?
+                {univariate === "Univariate" ?
                   <ul class="nav nav-underline">
-                  <li class="nav-item">
-                    <a class={stationary === "Stationary" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setStationary("Stationary")} href="#">Stationary</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class={stationary === "Non-Stationary" ? "nav-link active" : "nav-link"} onClick={() => setStationary("Non-Stationary")} href="#">Non Stationary</a>
-                  </li>
-                </ul>:null}
+                    <li class="nav-item">
+                      <a class={stationary === "Stationary" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setStationary("Stationary")} href="#">Stationary</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class={stationary === "Non-Stationary" ? "nav-link active" : "nav-link"} onClick={() => setStationary("Non-Stationary")} href="#">Non Stationary</a>
+                    </li>
+                  </ul> : null}
 
-                    { univariate==="Bivariate"?
+                {univariate === "Bivariate" ?
                   <ul class="nav nav-underline">
-                  <li class="nav-item">
-                    <a class={or === "or" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setOr("or")} href="#">OR</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class={or === "and" ? "nav-link active" : "nav-link"} onClick={() => setOr("and")} href="#">AND</a>
-                  </li>
-                </ul>:null}
+                    <li class="nav-item">
+                      <a class={or === "or" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setOr("or")} href="#">Conditional Probability</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class={or === "and" ? "nav-link active" : "nav-link"} onClick={() => setOr("and")} href="#">Join Probability</a>
+                    </li>
+                  </ul> : null}
 
-                {univariate==="Univariate"?
+                {univariate === "Univariate" ?
                   <ul class="nav nav-underline">
-                  <li class="nav-item">
-                    <a class={plotNum === 1 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(1)} href="#">RL(Discharge) Vs RP</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class={plotNum === 2 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(2)} href="#">RL(Duration) Vs RP</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class={plotNum === 3 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(3)} href="#">RL(Volume) Vs RP</a>
-                  </li>
-                </ul>:null}
+                    <li class="nav-item">
+                      <a class={plotNum === 1 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(1)} href="#">RL(Discharge) Vs RP</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class={plotNum === 2 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(2)} href="#">RL(Duration) Vs RP</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class={plotNum === 3 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(3)} href="#">RL(Volume) Vs RP</a>
+                    </li>
+                  </ul> : null}
 
-                {univariate==="Bivariate"?
+                {univariate === "Bivariate" ?
                   <ul class="nav nav-underline">
-                  <li class="nav-item">
-                    <a class={plotNum === 1 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(1)} href="#">Duration vs Peak</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class={plotNum === 2 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(2)} href="#">Volume vs Peak</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class={plotNum === 3 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(3)} href="#">Volume vs Duration</a>
-                  </li>
-                </ul>:null}
+                    <li class="nav-item">
+                      <a class={plotNum === 1 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(1)} href="#">Duration vs Peak</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class={plotNum === 2 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(2)} href="#">Volume vs Peak</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class={plotNum === 3 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(3)} href="#">Volume vs Duration</a>
+                    </li>
+                  </ul> : null}
 
                 {plot ?
                   <>
@@ -350,7 +385,7 @@ export default function MapComponent() {
                     {univariate}
                     {plotNum} */}
 
-                    <ExcelChartFromFile fileUrl={plot} />
+                    <ExcelChartFromFile fileUrl={plot} plot_no={plotNum} />
 
                     <p>{plot}</p>
                   </>

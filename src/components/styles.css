@@ -1,40 +1,51 @@
 :root {
- --background: #FFF5E4;     /* Soft Butter Yellow */
---primary: #FEBA17;        /* Warm Amber */
---secondary: #F8F4E1;      /* Vibrant Orange */
---accent: #4E1F00;         /* Deep Orange */
---text: #4E342E;           /* Rich Brown */
+    --background: #FFF5E4;
+    /* Soft Butter Yellow */
+    --primary: #FEBA17;
+    /* Warm Amber */
+    --primary: #9F2042;
+    --secondary: #F8F4E1;
+    /* Vibrant Orange */
+    --accent: #4E1F00;
+    --accent:#F8F4E1;
+    /* Deep Orange */
+    --text: #4E342E;
+    /* Rich Brown */
 
 }
-.Navbar{
+
+.Navbar {
     position: sticky;
     width: 100vw;
     top: 0;
     z-index: 5000;
     /* display: flex; */
-    background-color: var(--primary);  
+    background-color: var(--primary);
     /* //rgb(2, 45, 69) */
     /* color: white; */
     color: var(--text-color);
     /* justify-content: space-between; */
     /* align-items: center; */
-    padding:10px 50px ;
+    padding: 10px 50px;
 }
-.NavLink{
-    color: var(--accent);
-    display:inline-block;
+
+.NavLink {
+    color: var(--text);
+    display: inline-block;
     height: 100%;
     margin: 2px 20px;
     text-decoration: none;
     height: 20px;
     transition: all 0.3s ease;
-    &:hover{
+
+    &:hover {
         font-size: 18px;
         color: #74512D;
     }
 
 }
-.NavTitleLink{
+
+.NavTitleLink {
     color: var(--accent);
     text-align: start;
     font-size: 1.5rem;
@@ -42,41 +53,49 @@
     padding: 5px 10px;
     text-decoration: none;
 }
-.NavTitle{
+
+.NavTitle {
     text-align: start;
     border-bottom: 2px solid;
     padding-bottom: 10px;
     margin-bottom: 10px;
 
 }
-.title{
+
+.title {
     font-size: 2rem;
 }
-.landingPageContainer{
+
+.landingPageContainer {
     text-align: center;
     margin: 20px;
-    padding:20px 5%;
+    padding: 20px 5%;
 }
-.normalText{
+
+.normalText {
     font-size: 18px;
     text-align: justify;
 }
-.secondaryText{
+
+.secondaryText {
     font-size: 16px;
     text-align: justify;
     font-weight: 500;
 }
-.mapCard{
+
+.mapCard {
     max-width: 48%;
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 0 10px darkslategray;
 }
-.title_2{
+
+.title_2 {
     font-size: 1.5rem;
     font-weight: 600;
 }
-.devContainer{
+
+.devContainer {
     border-top: 2px solid;
     margin-top: 20px;
     display: flex;
@@ -85,19 +104,23 @@
 
 
 }
-.NavLinkBox{
+
+.NavLinkBox {
     display: flex;
 }
-.devBox{
+
+.devBox {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
 }
-.imgBox{
+
+.imgBox {
     max-width: 400px;
 }
-.leaflet-container{
+
+.leaflet-container {
     height: 500px;
     width: 60%;
     margin-inline: auto;
@@ -107,7 +130,8 @@
     box-shadow: 6px 6px 20px darkslategrey;
     margin-bottom: 50px;
 }
-.menuContainer{
+
+.menuContainer {
     height: 80vh;
     width: 20%;
     padding: 50px 30px;
@@ -116,9 +140,9 @@
     box-shadow: 5px 5px 10px grey;
 }
 
-.dataContainer{
+.dataContainer {
     height: 95vh;
-    top:1vh;
+    top: 1vh;
     left: 15vw;
     z-index: 10000;
     box-shadow: 0 0 20px darkslategrey;
@@ -128,7 +152,8 @@
     padding: 30px 30px;
     background-color: lightgoldenrodyellow;
 }
-.contactFormContainer{
+
+.contactFormContainer {
     width: 50%;
     margin: auto;
     padding: 30px;
@@ -137,7 +162,8 @@
     box-shadow: 0 0 10px darkslategrey;
     border-radius: 20px;
 }
-.memberbox{
+
+.memberbox {
     height: 370px;
     width: 250px;
     margin: 0 20px 40px 20px;
@@ -145,13 +171,33 @@
     border-radius: 20px;
     padding-bottom: 20px;
 }
-.memberimg{
+
+.memberimg {
     max-width: 80%;
     object-fit: contain;
     margin: 10px;
     max-height: 100%;
     border-radius: 10px;
 }
-.memimgbox{
+
+.memimgbox {
     height: 200px;
+}
+
+.infoTooltip {
+    visibility: 'hidden';
+    background-color: '#333';
+    color: '#fff';
+    text-align: 'center';
+    border-radius: '4px';
+    padding: '5px';
+    position: 'absolute';
+    z-index: 1;
+    top: '100%';
+    left: '50%';
+    transform: 'translateX(-50%)';
+    white-space: 'nowrap';
+    &:hover{
+        visibility: visible;
+    }
 }

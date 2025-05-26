@@ -26,7 +26,6 @@ function App() {
           <Route path='/publications' element={<Publication />} />
           <Route path='/team' element={<Team />} />
           <Route path='/outreach' element={<Outreach />} />
-          <Route path='/graph' element={<ExcelChartFromFile fileUrl={require('./assets/data.xlsx')}/>} />
         </Routes>
 
       </Router>

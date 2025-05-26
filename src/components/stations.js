@@ -22,7 +22,7 @@ export const NarmadaStations = [
         geoJson:HandiaGeoJson
     },
     {
-        name:"Madleshwar"
+        name:"Mandleshwar"
     },
     {
         name:"Garudeshwar",
