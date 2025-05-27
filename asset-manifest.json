@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/werg-design-flood/static/css/main.8755b40d.css",
+    "main.js": "/werg-design-flood/static/js/main.6334f45d.js",
+    "static/js/453.d1a86e40.chunk.js": "/werg-design-flood/static/js/453.d1a86e40.chunk.js",
+    "static/media/historic_flood.png": "/werg-design-flood/static/media/historic_flood.65549c4996e714cefa79.png",
+    "static/media/ce_iitr.jpg": "/werg-design-flood/static/media/ce_iitr.7958c8c724ab2fe26219.jpg",
+    "static/media/futuristic_flood.png": "/werg-design-flood/static/media/futuristic_flood.913d61ee00c174946721.png",
+    "static/media/image.png": "/werg-design-flood/static/media/image.f6c0591e041ed92a7c04.png",
+    "static/media/outreach_2.jpg": "/werg-design-flood/static/media/outreach_2.f3c28362711018c42bb9.jpg",
+    "static/media/outreach_1.jpg": "/werg-design-flood/static/media/outreach_1.d0a792c1c07f9ba3d289.jpg",
+    "static/media/iitr_175yrs_logo.png": "/werg-design-flood/static/media/iitr_175yrs_logo.1002e2032fb0bacee850.png",
+    "static/media/nrf_logo.png": "/werg-design-flood/static/media/nrf_logo.4ad118653e600abd5197.png",
+    "index.html": "/werg-design-flood/index.html",
+    "main.8755b40d.css.map": "/werg-design-flood/static/css/main.8755b40d.css.map",
+    "main.6334f45d.js.map": "/werg-design-flood/static/js/main.6334f45d.js.map",
+    "453.d1a86e40.chunk.js.map": "/werg-design-flood/static/js/453.d1a86e40.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8755b40d.css",
+    "static/js/main.6334f45d.js"
+  ]
+}
