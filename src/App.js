@@ -3,15 +3,11 @@ import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import MapComponent from './components/MapComponent';
 import Contact from './components/Contact';
-import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Publication from './components/Publication';
 import Team from './components/Team';
 import Outreach from './components/Outreach';
 import Project from './components/Project';
-import Graph from './components/Graph';
-import ExcelChartFromPath from './components/Excel';
-import ExcelChartFromFile from './components/Excel';
 
 function App() {
   return (

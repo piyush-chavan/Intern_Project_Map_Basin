@@ -1,5 +1,5 @@
-import {NarmadaGeoJson} from './output (1)/NarmadaGeoJson'
-import {GodavariGeoJson} from './output (1)/GodavariGeoJson'
+import {NarmadaGeoJson} from '../ShapeGeoJSON data/NarmadaGeoJson'
+import {GodavariGeoJson} from '../ShapeGeoJSON data/GodavariGeoJson'
 export const basins = [
     {
         name:"Narmada",

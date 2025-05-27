@@ -78,12 +78,13 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
 
 
   const loadExcel = async (fileUrl) => {
-    const response = await fetch(fileUrl);
-    if (!response.ok) {
-      // throw new Error(`Failed to fetch Excel file: ${response.statusText}`);
-      setData(null)
-    }
-    else {
+    try {
+      const response = await fetch(fileUrl);
+      if (!response.ok) {
+        // throw new Error(`Failed to fetch Excel file: ${response.statusText}`);
+        // setData(undefined)
+        return;
+      }
       const arrayBuffer = await response.arrayBuffer();
 
       const workbook = XLSX.read(arrayBuffer, { type: 'array' });
@@ -112,6 +113,11 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
 
       setData(formatted);
     }
+
+    catch (error) {
+      console.error("Error reading Excel file:", error.message);
+      setData(undefined); // Optional: clear or handle gracefully
+    }
   };
   useEffect(() => {
     if (!fileUrl) return;
@@ -128,7 +134,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
 
   return (
     <div style={{ padding: 20 }}>
-      {data.length > 0 && (
+      {data ?
         <ResponsiveContainer width="100%" height={400} style={{ backgroundColor: 'white' }} >
           <ComposedChart data={data} style={{ padding: '40px' }}>
             <CartesianGrid stroke="#ccc" />
@@ -188,7 +194,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
             {/* <Line name={customLegendNames["D"] || "D"} type="monotone" dataKey="D" stroke="#d62728" dot={false} activeDot={{ r: 6 }} strokeWidth={3} />
             <Line name={customLegendNames["E"] || "E"} type="monotone" dataKey="E" stroke="#ff7300" dot={false} activeDot={{ r: 6 }} strokeWidth={3} /> */}
             {/* Normal lines */}
-            {["B", "C"].map((key) =>
+            {data && data.length>0 && (["B", "C"].map((key) =>
               data[0][key] != null ? (
                 <Line
                   key={key}
@@ -201,7 +207,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
                   strokeDasharray="4 4"
                 />
               ) : null
-            )}
+            ))}
             <Line
               key={"A"}
               type="monotone"
@@ -213,8 +219,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
             />
           </ComposedChart>
         </ResponsiveContainer>
-      )}
-      {data.length === 0 ? <p>This graph is not available in database </p> : null}
+        : <p>This graph is not available in database </p>}
     </div>
   );
 }

@@ -2,11 +2,12 @@ import React from 'react'
 import Footer from './Footer'
 import './styles.css'
 import Member_template from './Member_template'
+import DevTemplate from './dev_template'
 
 export default function Team() {
     return (
         <div>
-            <div>
+            <div className='teamContainer'>
                 <br />
                 <div>
                     <p className='title_2'>Core Team</p>
@@ -84,25 +85,31 @@ export default function Team() {
                     <p className='title_2'>Development Team</p>
                     <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap', padding: '30px 5%' }}>
 
-                        <Member_template data={
+
+                        <DevTemplate data={
                             {
                                 name: "Piyush Chavan",
                                 designation: "Developer",
                                 description: "Dept. of Computer Science Engineering, IIT Roorkee",
-                                src: "/members/piyush.jpg"
+                                src: "/members/piyush.jpg",
+                                links: ["https://github.com/piyush-chavan", 'https://www.linkedin.com/in/piyush-chavan-9ab090267?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app']
                             }
-                        } />
+                        }
 
-                        <Member_template data={
-                            {
-                                name: "Bolapati Nithin Nathanael",
-                                designation: "Developer",
-                                description: "Dept. of Computer Science Engineering, IIT Roorkee",
-                                src: "/members/nithin.jpg"
+                        />
+
+                        <DevTemplate
+                            data={
+                                {
+                                    name: "Bolapati Nithin Nathanael",
+                                    designation: "Developer",
+                                    description: "Dept. of Computer Science Engineering, IIT Roorkee",
+                                    src: "/members/nithin.jpg",
+                                    links: ["https://github.com/Hacker-nn", 'https://www.linkedin.com/in/nithin-nathanael-7314b3260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app']
+
+                                }
                             }
-                        } />
-
-
+                        />
 
                     </div>
                 </div>

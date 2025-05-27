@@ -7,8 +7,8 @@ export default function Navbar() {
     <div className='Navbar'>
       <div className='NavTitle'>
         <Link to="/" className="NavTitleLink">
-          <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" />
-          Water Extremes Research Group : Web-Tool for Design Flood </Link>
+          {/* <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" /> */}
+          <i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group : Web-Tool for Design Flood </Link>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'stretch', backgroundColor: 'var(--secondary)', borderRadius: '16px' }}>
         <div style={{ margin: 'auto 0', padding: 0 }}>

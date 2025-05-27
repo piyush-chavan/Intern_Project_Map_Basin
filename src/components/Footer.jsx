@@ -16,10 +16,10 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div style={{ width: '100vw', padding: '30px 5%', backgroundColor: 'var(--primary)', textAlign: 'start' }}>
+            <div className='footContainer' style={{ width: '100vw', padding: '30px 5%', backgroundColor: 'var(--primary)', textAlign: 'start' }}>
                 <p className='title_2' style={{ fontSize: '1.5rem' }}>
-                    <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" />
-                    Water Extremes Research Group : Web Tool for Design Flood</p>
+                    {/* <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" /> */}
+                    <i class="fa-solid fa-house-flood-water"></i> Water Extremes Research Group : Web Tool for Design Flood</p>
                 <div style={{ display: 'flex' }}>
 
                     <div style={{ flex: '1' }}>

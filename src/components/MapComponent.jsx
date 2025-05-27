@@ -1,43 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './styles.css'
-import { MapContainer, Marker, Popup, TileLayer, useMap, CircleMarker, Tooltip } from 'react-leaflet'
-import L from 'leaflet'
-import { indianStates } from './states.js'
-import { NarmadaStations } from './stations.js'
+import { MapContainer, GeoJSON, Marker, Popup, TileLayer, useMap, CircleMarker, Tooltip } from 'react-leaflet'
+import { indianStates } from '../assets/data/states.js'
+import { Stations } from '../assets/data/stations.js'
 import Footer from './Footer.jsx'
-// import { ShapefileLayer } from './ShapefileLayer.jsx'
 import { ZoomToLayer } from './ShapefileLayer.jsx'
-import shp from 'shpjs';
-import { GeoJSON } from 'react-leaflet';
-import { NarmadaGeoJson } from './output (1)/NarmadaGeoJson.js'
-import { basins } from './basins.js'
+import { basins } from '../assets/data/basins.js'
 import ExcelChartFromFile from './Excel.jsx'
-import { indisGeojson } from './output (1)/india_st.js'
+import { indisGeojson } from '../assets/ShapeGeoJSON data/india_st.js'
 
-const keralaGeoJson = {
-  "type": "Feature",
-  "properties": { "name": "Kerala" },
-  "geometry": {
-    "type": "Polygon",
-    "coordinates": [
-      [
-        [74.0195, 12.7761],
-        [75.1355, 12.7066],
-        [75.9696, 11.8065],
-        [76.1300, 10.5721],
-        [76.6413, 9.2021],
-        [76.5005, 8.8992],
-        [76.2999, 8.5042],
-        [75.8362, 8.6602],
-        [75.0940, 10.0732],
-        [74.8469, 11.0083],
-        [74.5389, 11.8884],
-        [74.0411, 12.7388],
-        [74.0195, 12.7761]
-      ]
-    ]
-  }
-};
+
 
 function ChangeCenter({ center, zoom }) {
   const map = useMap();
@@ -61,7 +33,7 @@ function ZoomControlledDots({ coordinates, clickhandle }) {
   }, [map]);
 
   const handleClick = (point) => {
-    const clickedStation = NarmadaStations.filter((item) => item.name === point.name)[0]
+    const clickedStation = Stations.filter((item) => item.name === point.name)[0]
     // setStation(clickedStation.name)
     // setPopup(true)
     clickhandle(clickedStation)
@@ -72,20 +44,20 @@ function ZoomControlledDots({ coordinates, clickhandle }) {
   return (
     <>
       {visible &&
-        coordinates.map(({ name: name, position: [lat, lng] }, index) => (
+        coordinates.map((item, index) => (
           <CircleMarker
             style={{ zIndex: 999 }}
             key={index}
-            center={[lat, lng]}
+            center={item.position}
             radius={10}
             pane="markerPane"
             pathOptions={{ color: '#ff5722', fillColor: '#ff5722', fillOpacity: 0.8 }}
             eventHandlers={{
-              click: () => handleClick({ name: name, position: [lat, lng] })
+              click: () => handleClick({ name: item.name, position: item.positiion })
             }}
           >
             <Tooltip direction="top" offset={[0, -5]} opacity={1} sticky>
-              {name}
+              {item.name}
             </Tooltip>
           </CircleMarker>
         ))}
@@ -96,41 +68,6 @@ function ZoomControlledDots({ coordinates, clickhandle }) {
 export default function MapComponent() {
   const [center, setCenter] = useState([20.5937, 78.9629])
 
-  const cities = [
-    { name: 'Latur', lat: 18.4088, lng: 76.5604 },
-    { name: 'Delhi', lat: 28.6139, lng: 77.2090 },
-    { name: 'Mumbai', lat: 19.0760, lng: 72.8777 },
-    { name: 'Pune', lat: 18.5204, lng: 73.8567 },
-    { name: 'Hyderabad', lat: 17.3850, lng: 78.4867 },
-    { name: 'Roorkee', lat: 29.8543, lng: 77.8880 },
-  ];
-
-  const points = [
-    {
-      name: "Mohgaon",
-      position: [22.7658, 80.6234]
-    },
-    {
-      name: "Baramghat",
-      position: [23.0309, 79.0156]
-    },
-    {
-      name: "Hoshangabad",
-      position: [22.7561, 77.7328]
-    },
-    {
-      name: "Handia",
-      position: [22.4916, 76.9936]
-    },
-    {
-      name: "Mandleshwar",
-      position: [22.1684, 80.6234]
-    },
-    {
-      name: "Garudeshwar",
-      position: [21.8847, 73.6544]
-    }
-  ];
 
   const mapBackgrounds = [
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -158,6 +95,7 @@ export default function MapComponent() {
   const [mapurl, setMapurl] = useState(0)
   const [zoom, setZoom] = useState(5)
   const [show, setShow] = useState(false);
+  const [availableStations, setavailableStations] = useState(null)
 
 
   const handleStationPointClick = (station) => {
@@ -168,32 +106,36 @@ export default function MapComponent() {
   const handleStateChange = (event) => {
     const value = event.target.value;
     const text = event.target.options[event.target.selectedIndex].text;
-    setState(text)
-    const currentState = indianStates.filter((item) => item.name === text);
-    setCenter([currentState[0].latitude, currentState[0].longitude])
-    setZoom(6)
+    var dropdownStations = Stations.filter((item) => item.state === text)
+    if (text) {
+      setState(text)
+      setavailableStations(dropdownStations)
+      const currentState = indianStates.filter((item) => item.name === text);
+      setCenter([currentState[0].latitude, currentState[0].longitude])
+      setZoom(6)
+    }
   };
   const handleBasinChange = (event) => {
     const value = event.target.value;
     var text = event.target.options[event.target.selectedIndex].text;
     text = basins.filter((item) => item.name === text)[0]
+    var dropdownStations = Stations.filter((item) => item.basin === text.name)
     if (text) {
       setBasin(text.name);
       setModeShape(text.geojson);
+      setavailableStations(dropdownStations);
     }
   };
   const handleStationChange = (event) => {
     const value = event.target.value;
     var text = event.target.options[event.target.selectedIndex].text;
-    text = NarmadaStations.filter((item) => item.name === text)[0]
-    const point = points.filter((item) => item.name === text.name)[0]
+    text = Stations.filter((item) => item.name === text)[0]
     if (text) {
       setStation(text.name);
-      setStationShape(text.geoJson);
-      setCenter(point.position)
+      // setStationShape(text.geoJson);
+      setCenter(text.position)
       setZoom(9)
     }
-    const currentStation = NarmadaStations.filter((item) => item.name === text);
   };
   useEffect(() => {
     if (univariate === "Univariate") {
@@ -211,14 +153,14 @@ export default function MapComponent() {
 
           {/* <div class="form-check"> */}
           <input onChange={(e) => setMode(e.target.value)} class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="State" checked={mode === "State"} />
-          <label style={{ margin: '2px 40px 2px 2px', fontSize: '18px' }} class="form-check-label" for="exampleRadios1">
+          <label style={{ margin: '2px 40px 2px 2px', fontSize: '18px',color:'#F8F4E1' }} class="form-check-label" for="exampleRadios1">
             State
           </label>
           {/* </div> */}
 
           {/* <div class="form-check"> */}
           <input onChange={(e) => setMode(e.target.value)} class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Basin" checked={mode === "Basin"} />
-          <label style={{ margin: '2px 40px 2px 2px', fontSize: '18px' }} class="form-check-label" for="exampleRadios1">
+          <label style={{ margin: '2px 40px 2px 2px', fontSize: '18px',color:'#F8F4E1' }} class="form-check-label" for="exampleRadios1">
             Basin
           </label>
           {/* </div> */}
@@ -246,8 +188,11 @@ export default function MapComponent() {
                 <label class="input-group-text" for="inputGroupSelect01">Basin</label>
                 <select class="form-select" id="inputGroupSelect01" onChange={handleBasinChange}>
                   <option selected>Choose...</option>
-                  <option value="1">Narmada</option>
-                  <option value="2">Godavari</option>
+                  {
+                    basins.map((unitBasin) =>
+                      <option>{unitBasin.name}</option>
+                    )
+                  }
                   {/* <option value="3">Krishna</option> */}
                 </select>
               </div>
@@ -258,10 +203,11 @@ export default function MapComponent() {
             <label class="input-group-text" for="inputGroupSelect01">Station</label>
             <select class="form-select" id="inputGroupSelect01" onChange={handleStationChange}>
               <option selected>Choose...</option>
-              {
-                NarmadaStations.map((unitStation) =>
+              {availableStations ?
+                availableStations.map((unitStation) =>
                   <option>{unitStation.name}</option>
                 )
+                : null
               }
             </select>
           </div>
@@ -273,27 +219,20 @@ export default function MapComponent() {
         <MapContainer center={center} zoom={6} >
           <TileLayer
             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            // url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             url={mapBackgrounds[mapurl]}
           />
-          {/* <ShapefileLayer shapefileUrl={'./godavari_shapefile.zip'} /> */}
           <GeoJSON data={indisGeojson} style={{ color: 'green', weight: 2 }} />
-          {modeshape && <GeoJSON key={basin} data={modeshape} style={{ color: 'purple', weight: 2 }} />}
+          {modeshape && mode === "Basin" && <GeoJSON key={basin} data={modeshape} style={{ color: 'purple', weight: 2 }} />}
           {/* {stationShape && <GeoJSON key={station} data={stationShape} style={{ color: 'green', weight: 2 }} />} */}
           <ZoomToLayer geojson={modeshape} />
           <ChangeCenter center={center} zoom={zoom} />
-          <ZoomControlledDots coordinates={points} clickhandle={handleStationPointClick} />
+          <ZoomControlledDots coordinates={availableStations} clickhandle={handleStationPointClick} />
 
-          {/* {cities.map((city, idx) => (
-            <Marker key={idx} position={[city.lat, city.lng]}>
-              <Popup>{city.name}</Popup>
-            </Marker>
-          ))} */}
         </MapContainer>
         <div className='dataContainer' style={popup ? null : { display: 'none' }} >
           <i onClick={() => setPopup(false)} style={{ position: 'absolute', top: '20px', right: '20px', fontSize: '30px', cursor: 'pointer' }} class="fa-solid fa-xmark"></i>
           <p style={{ fontSize: "26px", textAlign: "start", fontWeight: "bolder" }}>{station === 'Madleshwar' ? "Mandleshwar" : station}</p>
-          <div style={{ position: 'absolute',top:200,right:60, display: 'inline-block' }}>
+          <div style={{ position: 'absolute', top: 200, right: 60, display: 'inline-block' }}>
             <span
               onMouseEnter={() => setShow(true)}
               onMouseLeave={() => setShow(false)}
@@ -387,7 +326,7 @@ export default function MapComponent() {
 
                     <ExcelChartFromFile fileUrl={plot} plot_no={plotNum} />
 
-                    <p>{plot}</p>
+                    {/* <p>{plot}</p> */}
                   </>
                   : null}
               </>
