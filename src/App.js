@@ -8,6 +8,7 @@ import Publication from './components/Publication';
 import Team from './components/Team';
 import Outreach from './components/Outreach';
 import Project from './components/Project';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          <Route path='/login' element={<Login/>} />
           <Route path='/' element={<LandingPage />} />
           <Route path='home' element={<MapComponent />} />
           <Route path='/contact' element={<Contact />} />

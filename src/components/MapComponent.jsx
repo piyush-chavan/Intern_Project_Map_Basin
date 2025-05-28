@@ -8,6 +8,7 @@ import { ZoomToLayer } from './ShapefileLayer.jsx'
 import { basins } from '../assets/data/basins.js'
 import ExcelChartFromFile from './Excel.jsx'
 import { indisGeojson } from '../assets/ShapeGeoJSON data/india_st.js'
+import { Navigate } from 'react-router-dom'
 
 
 
@@ -66,6 +67,7 @@ function ZoomControlledDots({ coordinates, clickhandle }) {
 }
 
 export default function MapComponent() {
+
   const [center, setCenter] = useState([20.5937, 78.9629])
 
 
@@ -145,6 +147,11 @@ export default function MapComponent() {
       setPlot(`/graph_xl_files/${station}_${or}_${univariate}_${plotNum}.xlsx`)
     }
   }, [station, stationary, or, univariate, plotNum])
+
+  const isAuthenticated = localStorage.getItem("auth");
+  if(!isAuthenticated){ 
+    return <Navigate to="/login" />
+  }
 
   return (
     <>

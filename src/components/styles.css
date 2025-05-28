@@ -33,9 +33,8 @@
     color: var(--text);
     display: inline-block;
     height: 100%;
-    margin: 2px 20px;
+    margin: 0 20px;
     text-decoration: none;
-    height: 20px;
     transition: all 0.3s ease;
 
     &:hover {
@@ -55,6 +54,9 @@
 }
 
 .NavTitle {
+    display: flex;
+    justify-content: space-between;
+    height: 7vh;
     text-align: start;
     border-bottom: 2px solid var(--secondary);
     padding-bottom: 10px;
@@ -175,6 +177,7 @@
     padding: 30px;
     margin-top: 50px;
     background-color: var(--secondary);
+    background: linear-gradient(var(--primary),var(--secondary));
     box-shadow: 0 0 10px darkslategrey;
     border-radius: 20px;
 }
@@ -228,3 +231,12 @@
 /* .teamContainer{
     background: linear-gradient(#B0DB9C,#CAE8BD);
 } */
+
+.loginBox{
+    margin: 50px auto;
+    padding: 20px 50px;
+    max-width: 600px;
+    box-shadow: 0 0 10px darkslategrey;
+    border-radius: 20px;
+    background: linear-gradient(var(--primary),var(--secondary));
+}
