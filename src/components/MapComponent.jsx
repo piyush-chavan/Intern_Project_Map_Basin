@@ -18,17 +18,17 @@ function ChangeCenter({ center, zoom }) {
   return null;
 }
 
-function ZoomControlledDots({ coordinates, clickhandle }) {
+function ZoomControlledDots({ coordinates=[], clickhandle }) {
   const map = useMap();
   const [visible, setVisible] = useState(map.getZoom() >= 7);
 
-
+  
   useEffect(() => {
     const handleZoom = () => {
       const zoomLevel = map.getZoom();
       setVisible(zoomLevel >= 7);
     };
-
+    
     map.on('zoomend', handleZoom);
     return () => map.off('zoomend', handleZoom);
   }, [map]);
@@ -45,7 +45,7 @@ function ZoomControlledDots({ coordinates, clickhandle }) {
   return (
     <>
       {visible &&
-        coordinates.map((item, index) => (
+        coordinates?.map((item, index) => (
           <CircleMarker
             style={{ zIndex: 999 }}
             key={index}
@@ -54,7 +54,7 @@ function ZoomControlledDots({ coordinates, clickhandle }) {
             pane="markerPane"
             pathOptions={{ color: '#ff5722', fillColor: '#ff5722', fillOpacity: 0.8 }}
             eventHandlers={{
-              click: () => handleClick({ name: item.name, position: item.positiion })
+              click: () => handleClick({ name: item.name, position: item.position })
             }}
           >
             <Tooltip direction="top" offset={[0, -5]} opacity={1} sticky>

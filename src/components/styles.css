@@ -16,7 +16,7 @@
 
 .Navbar {
     position: sticky;
-    width: 100vw;
+    width: 100%;
     top: 0;
     z-index: 5000;
     /* display: flex; */
@@ -38,7 +38,9 @@
     transition: all 0.3s ease;
 
     &:hover {
-        font-size: 18px;
+        /* font-size: 18px; */
+        scale: 1.1;
+        font-weight: 500;
         color: #74512D;
     }
 
@@ -49,18 +51,19 @@
     text-align: start;
     font-size: 1.5rem;
     font-weight: 600;
-    padding: 5px 10px;
+    padding: 0 10px;
     text-decoration: none;
 }
 
 .NavTitle {
     display: flex;
     justify-content: space-between;
-    height: 7vh;
+    height: fit-content;
     text-align: start;
     border-bottom: 2px solid var(--secondary);
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     margin-bottom: 10px;
+    align-items: center;
 
 }
 
@@ -78,13 +81,13 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('/public/image.png');
+    background-image: url('/public/large-tsunami-wave-crashing-into-city.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 1000px;
     width: 100%;
-    opacity: 0.4;
+    opacity: 0.5;
     /* 👈 reduce only the background image */
     z-index: -1;
 }
@@ -177,7 +180,7 @@
     padding: 30px;
     margin-top: 50px;
     background-color: var(--secondary);
-    background: linear-gradient(var(--primary),var(--secondary));
+    background: linear-gradient(var(--primary), var(--secondary));
     box-shadow: 0 0 10px darkslategrey;
     border-radius: 20px;
 }
@@ -232,11 +235,11 @@
     background: linear-gradient(#B0DB9C,#CAE8BD);
 } */
 
-.loginBox{
+.loginBox {
     margin: 50px auto;
     padding: 20px 50px;
     max-width: 600px;
     box-shadow: 0 0 10px darkslategrey;
     border-radius: 20px;
-    background: linear-gradient(var(--primary),var(--secondary));
+    background: linear-gradient(var(--primary), var(--secondary));
 }

@@ -9,12 +9,14 @@ import Team from './components/Team';
 import Outreach from './components/Outreach';
 import Project from './components/Project';
 import Login from './components/Login';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Navbar />
+        <ScrollToTop/>
         <Routes>
           <Route path='/login' element={<Login/>} />
           <Route path='/' element={<LandingPage />} />
