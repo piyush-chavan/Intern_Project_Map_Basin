@@ -27,7 +27,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const CustomLegend = ({ payload }) => (
-  <ul style={{ listStyle: 'none', paddingLeft: 0, display: 'flex', justifyContent: 'space-evenly', padding: '0 20%' }}>
+  <ul style={{ listStyle: 'none', paddingLeft: 0, display: 'flex', justifyContent: 'space-evenly' }}>
     {payload.map((entry, index) => {
       const displayName = entry.value === "E_minus_D" ? "Ensemble" : entry.value;
       const isBox = entry.value === "E_minus_D";
@@ -133,10 +133,10 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div>
       {data ?
-        <ResponsiveContainer width="100%" height={400} style={{ backgroundColor: 'white' }} >
-          <ComposedChart data={data} style={{ padding: '40px' }}>
+        <ResponsiveContainer width="100%" height={400} style={{ backgroundColor: 'white',marginTop:'20px' }} >
+          <ComposedChart data={data} style={{ padding: '20px' }}>
             <CartesianGrid stroke="#ccc" />
             <XAxis
               dataKey="x"
@@ -147,7 +147,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
               tick={{ fill: 'black' }} // Color of tick labels
               label={{ fill: 'black' }} // Label color
             >
-              <Label fill='black' value="Return Period (years)" offset={-20} position="insideBottom" />
+              <Label fill='black' value="Return Period (years)" offset={-10} position="insideBottom" />
             </XAxis>
             {plot_no != 2 ?
               <YAxis
@@ -157,7 +157,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
                 tick={{ fill: 'black' }} // Color of tick labels
                 label={{ fill: 'black' }} // Label color
               >
-                <Label fill='black' value={univariate_y_axis[plot_no - 1]} offset={-40} angle={-90} dy={120} position="insideLeft" />
+                <Label fill='black' value={univariate_y_axis[plot_no - 1]} offset={10} angle={-90} dy={120} position="insideLeft" />
               </YAxis>
               :
               <YAxis
@@ -167,7 +167,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
                 tick={{ fill: 'black' }} // Color of tick labels
                 label={{ fill: 'black' }} // Label color
               >
-                <Label fill='black' value={univariate_y_axis[plot_no - 1]} offset={-40} angle={-90} dy={120} position="insideLeft" />
+                <Label fill='black' value={univariate_y_axis[plot_no - 1]} offset={10} angle={-90} dy={120} position="insideLeft" />
               </YAxis>}
             <Tooltip content={<CustomTooltip />} />
             <Legend content={<CustomLegend />} />

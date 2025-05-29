@@ -6,7 +6,7 @@ export default function Outreach() {
   return (
     <div>
       <p className='title_2'>Outreach</p>
-      <div style={{ margin: '30px 10%' }}>
+      <div style={{ margin: '30px 8%' }}>
 
         <p className='title_2' style={{ textAlign: 'start' }}>Knowledge Transfer Session under Scientific Social Responsibility (SSR) Scheme  </p>
         <p className='normalText' style={{ color: 'red',fontWeight:'500' }}>Session 1: Methodist Girls Inter College Roorkee.</p>
@@ -16,15 +16,15 @@ export default function Outreach() {
 
         </p>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', border: '2px solid', borderRadius: "20px", padding: '20px' }}>
-          <div style={{ width: '40%' }}>
+        <div style={{ display: 'flex',flexWrap:'wrap', justifyContent: 'space-evenly',textAlign:'center', border: '2px solid', borderRadius: "20px", padding: '20px' }}>
+          <div style={{ width:'min(100%,500px)',margin:'2px 5px' }}>
 
-            <img style={{ maxWidth: '100%', borderRadius: '20px' }} src={require('../assets/images/outreach_1.jpg')} alt="" />
+            <img style={{ maxWidth: '100%', borderRadius: '10px' }} src={require('../assets/images/outreach_1.jpg')} alt="" />
             <p className='secondaryText' style={{ textAlign: 'center', marginTop: '10px' }}>Prize distribution for the winners of the quiz competition</p>
           </div>
-          <div style={{ width: '40%' }}>
+          <div style={{ width:'min(100%,500px)',margin:'2px 5px' }}>
 
-            <img style={{ maxWidth: '100%', borderRadius: '20px' }} src={require("../assets/images/outreach_2.jpg")} alt="" />
+            <img style={{ maxWidth: '100%', borderRadius: '10px' }} src={require("../assets/images/outreach_2.jpg")} alt="" />
             <p className='secondaryText' style={{ textAlign: 'center', marginTop: '10px' }}>Students and Teachers with the IITR team.</p>
           </div>
         </div>

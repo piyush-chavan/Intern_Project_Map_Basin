@@ -16,16 +16,26 @@ export default function Navbar() {
     const userName = localStorage.getItem("userName");
     setUserName(userName)
   }, [])
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div className='Navbar'>
       <div className='NavTitle'>
-        <Link to="/" className="NavTitleLink">
+        <Link to="/" className="NavTitleLink" >
           {/* <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" /> */}
-          <i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group : Web-Tool for Design Flood </Link>
-        {userName ? <span className='NavTitleLink' style={{ fontSize: '20px' }}><i class="fa-solid fa-user"></i> {userName}</span> : null}
+          {isMobile ? <><i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group</>
+            : <> <i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group : Web-Tool for Design Flood </>}
+        </Link>
+        {userName ? <span className='NavTitleLink'><i class="fa-solid fa-user"></i> {userName}</span> : null}
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'stretch', backgroundColor: 'var(--secondary)', borderRadius: '16px' }}>
-        <div style={{ margin: 'auto 0', padding: 0, minHeight: '5vh', display: 'flex', alignItems: 'center' }}>
+        <div style={{ margin: 'auto 0', padding: 0, display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
 
           <Link to="/" className="NavLink">Home</Link>
           <Link to="/team" className="NavLink">Team</Link>

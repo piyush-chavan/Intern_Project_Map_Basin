@@ -155,7 +155,7 @@ export default function MapComponent() {
 
   return (
     <>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex',flexWrap:'wrap' }}>
         <div className='menuContainer' >
 
           {/* <div class="form-check"> */}
@@ -238,7 +238,7 @@ export default function MapComponent() {
         </MapContainer>
         <div className='dataContainer' style={popup ? null : { display: 'none' }} >
           <i onClick={() => setPopup(false)} style={{ position: 'absolute', top: '20px', right: '20px', fontSize: '30px', cursor: 'pointer' }} class="fa-solid fa-xmark"></i>
-          <p style={{ fontSize: "26px", textAlign: "start", fontWeight: "bolder" }}>{station === 'Madleshwar' ? "Mandleshwar" : station}</p>
+          <p style={{ fontSize: "26px", textAlign: "start", fontWeight: "bolder" }}>{station}</p>
           <div style={{ position: 'absolute', top: 200, right: 60, display: 'inline-block' }}>
             <span
               onMouseEnter={() => setShow(true)}

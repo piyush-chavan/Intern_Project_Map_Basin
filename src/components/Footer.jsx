@@ -12,7 +12,7 @@ export default function Footer() {
                         <img src={require("../assets/logos/iitr_175yrs_logo.png")} alt="" style={{ maxWidth: '100%' }} />
                     </div>
                     <div className='imgBox'>
-                        <img src={require("../assets/logos/nrf_logo.png")} alt="" style={{ maxWidth: '70%' }} />
+                        <img src={require("../assets/logos/nrf_logo.png")} alt="" style={{ maxWidth: '50%' }} />
                     </div>
                 </div>
             </div>
@@ -20,9 +20,9 @@ export default function Footer() {
                 <p className='title_2' style={{ fontSize: '1.5rem' }}>
                     {/* <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" /> */}
                     <i class="fa-solid fa-house-flood-water"></i> Water Extremes Research Group : Web Tool for Design Flood</p>
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex',flexWrap:'wrap',justifyContent:'space-between' }}>
 
-                    <div style={{ flex: '1' }}>
+                    <div style={{ minWidth:'min(400px,100%)' }}>
 
                         <p className='title_2'> <i class="fa-solid fa-location-dot"></i> Address</p>
                         <p className='secondaryText'>Room No. 228 <br />
@@ -37,7 +37,7 @@ export default function Footer() {
                             (R) +91-1332-286951 (IP) <br />
                             Email: vinnarasi@ce.iitr.ac.in</p>
                     </div>
-                    <div style={{ flex: '2' }}>
+                    <div style={{ width:'min(800px,100%)'}}>
                         <img style={{ maxWidth: '100%', borderRadius: '20px', boxShadow: '0 0 10px grey' }} src={require("../assets/images/ce_iitr.jpg")} alt="" />
                     </div>
                 </div>

@@ -26,7 +26,7 @@
     color: var(--text-color);
     /* justify-content: space-between; */
     /* align-items: center; */
-    padding: 10px 50px;
+    padding: 10px min(50px, 5%);
 }
 
 .NavLink {
@@ -55,8 +55,15 @@
     text-decoration: none;
 }
 
+@media screen and (max-width:768px) {
+    .NavTitleLink {
+        font-size: 1.1rem;
+    }
+}
+
 .NavTitle {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     height: fit-content;
     text-align: start;
@@ -104,9 +111,10 @@
 }
 
 .mapCard {
-    max-width: 48%;
+    width: fit-content;
     border-radius: 20px;
     padding: 20px;
+    margin-bottom: 20px;
     box-shadow: 0 0 10px darkslategray;
 }
 
@@ -137,12 +145,12 @@
 }
 
 .imgBox {
-    max-width: 400px;
+    width: 500px;
 }
 
 .leaflet-container {
     height: 500px;
-    width: 60%;
+    width: max(60%, 360px);
     margin-inline: auto;
     margin-top: 50px;
     border-radius: 20px;
@@ -152,8 +160,8 @@
 }
 
 .menuContainer {
-    height: 80vh;
-    width: 20%;
+    /* height: 80vh; */
+    /* width: max(24%,300px); */
     padding: 50px 30px;
     background-color: var(--background);
     border-bottom-right-radius: 20px;
@@ -162,8 +170,8 @@
 }
 
 .dataContainer {
-    height: 95vh;
-    top: 1vh;
+    height: fit-content;
+    top: 5vh;
     left: 15vw;
     z-index: 10000;
     box-shadow: 0 0 20px darkslategrey;
@@ -174,8 +182,27 @@
     background-color: lightgoldenrodyellow;
 }
 
+@media screen and (max-width:768px) {
+    .menuContainer {
+        height: fit-content;
+    }
+
+    .leaflet-container {
+        height: 360px;
+    }
+
+    .dataContainer {
+        width: 90vw;
+        height: fit-content;
+        left: 5vw;
+        top: 4vh;
+    }
+}
+
+
 .contactFormContainer {
     width: 50%;
+    min-width: 360px;
     margin: auto;
     padding: 30px;
     margin-top: 50px;
@@ -236,6 +263,8 @@
 } */
 
 .loginBox {
+    width: 50%;
+    min-width: 360px;
     margin: 50px auto;
     padding: 20px 50px;
     max-width: 600px;
