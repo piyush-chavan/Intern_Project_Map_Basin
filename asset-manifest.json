@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Intern_Project_Map_Basin/static/css/main.904872b3.css",
-    "main.js": "/Intern_Project_Map_Basin/static/js/main.ee162e94.js",
+    "main.css": "/Intern_Project_Map_Basin/static/css/main.0b9c11e8.css",
+    "main.js": "/Intern_Project_Map_Basin/static/js/main.91f962c2.js",
     "static/js/453.d1a86e40.chunk.js": "/Intern_Project_Map_Basin/static/js/453.d1a86e40.chunk.js",
     "static/media/large-tsunami-wave-crashing-into-city.jpg": "/Intern_Project_Map_Basin/static/media/large-tsunami-wave-crashing-into-city.6eeb317a2f2e8f832196.jpg",
     "static/media/historic_flood.png": "/Intern_Project_Map_Basin/static/media/historic_flood.65549c4996e714cefa79.png",
@@ -12,12 +12,12 @@
     "static/media/iitr_175yrs_logo.png": "/Intern_Project_Map_Basin/static/media/iitr_175yrs_logo.1002e2032fb0bacee850.png",
     "static/media/nrf_logo.png": "/Intern_Project_Map_Basin/static/media/nrf_logo.4ad118653e600abd5197.png",
     "index.html": "/Intern_Project_Map_Basin/index.html",
-    "main.904872b3.css.map": "/Intern_Project_Map_Basin/static/css/main.904872b3.css.map",
-    "main.ee162e94.js.map": "/Intern_Project_Map_Basin/static/js/main.ee162e94.js.map",
+    "main.0b9c11e8.css.map": "/Intern_Project_Map_Basin/static/css/main.0b9c11e8.css.map",
+    "main.91f962c2.js.map": "/Intern_Project_Map_Basin/static/js/main.91f962c2.js.map",
     "453.d1a86e40.chunk.js.map": "/Intern_Project_Map_Basin/static/js/453.d1a86e40.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.904872b3.css",
-    "static/js/main.ee162e94.js"
+    "static/css/main.0b9c11e8.css",
+    "static/js/main.91f962c2.js"
   ]
 }
