@@ -18,17 +18,17 @@ function ChangeCenter({ center, zoom }) {
   return null;
 }
 
-function ZoomControlledDots({ coordinates=[], clickhandle }) {
+function ZoomControlledDots({ coordinates = [], clickhandle }) {
   const map = useMap();
   const [visible, setVisible] = useState(map.getZoom() >= 7);
 
-  
+
   useEffect(() => {
     const handleZoom = () => {
       const zoomLevel = map.getZoom();
       setVisible(zoomLevel >= 7);
     };
-    
+
     map.on('zoomend', handleZoom);
     return () => map.off('zoomend', handleZoom);
   }, [map]);
@@ -141,33 +141,33 @@ export default function MapComponent() {
   };
   useEffect(() => {
     if (univariate === "Univariate") {
-      setPlot(`/graph_xl_files/${station}_${univariate}_${stationary}_${plotNum}.xlsx`)
+      setPlot(`${process.env.PUBLIC_URL}/graph_xl_files/${station}_${univariate}_${stationary}_${plotNum}.xlsx`)
     }
     else {
-      setPlot(`/graph_xl_files/${station}_${or}_${univariate}_${plotNum}.xlsx`)
+      setPlot(`${process.env.PUBLIC_URL}/graph_xl_files/${station}_${or}_${univariate}_${plotNum}.xlsx`)
     }
   }, [station, stationary, or, univariate, plotNum])
 
   const isAuthenticated = localStorage.getItem("auth");
-  if(!isAuthenticated){ 
+  if (!isAuthenticated) {
     return <Navigate to="/login" />
   }
 
   return (
     <>
-      <div style={{ display: 'flex',flexWrap:'wrap' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         <div className='menuContainer' >
 
           {/* <div class="form-check"> */}
           <input onChange={(e) => setMode(e.target.value)} class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="State" checked={mode === "State"} />
-          <label style={{ margin: '2px 40px 2px 2px', fontSize: '18px',color:'#F8F4E1' }} class="form-check-label" for="exampleRadios1">
+          <label style={{ margin: '2px 40px 2px 2px', fontSize: '18px', color: '#F8F4E1' }} class="form-check-label" for="exampleRadios1">
             State
           </label>
           {/* </div> */}
 
           {/* <div class="form-check"> */}
           <input onChange={(e) => setMode(e.target.value)} class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="Basin" checked={mode === "Basin"} />
-          <label style={{ margin: '2px 40px 2px 2px', fontSize: '18px',color:'#F8F4E1' }} class="form-check-label" for="exampleRadios1">
+          <label style={{ margin: '2px 40px 2px 2px', fontSize: '18px', color: '#F8F4E1' }} class="form-check-label" for="exampleRadios1">
             Basin
           </label>
           {/* </div> */}
@@ -273,55 +273,55 @@ export default function MapComponent() {
               <>
                 <ul class="nav nav-underline">
                   <li class="nav-item">
-                    <a class={univariate === "Univariate" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => { setUnivariate("Univariate"); setStationary("Stationary") }} href="#">Univariate</a>
+                    <a style={{ cursor: 'pointer' }} class={univariate === "Univariate" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => { setUnivariate("Univariate"); setStationary("Stationary") }} >Univariate</a>
                   </li>
                   <li class="nav-item">
-                    <a class={univariate === "Bivariate" ? "nav-link active" : "nav-link"} onClick={() => { setUnivariate("Bivariate"); setOr("or") }} href="#">Bivariate</a>
+                    <a style={{ cursor: 'pointer' }} class={univariate === "Bivariate" ? "nav-link active" : "nav-link"} onClick={() => { setUnivariate("Bivariate"); setOr("or") }} >Bivariate</a>
                   </li>
                 </ul>
                 {univariate === "Univariate" ?
                   <ul class="nav nav-underline">
                     <li class="nav-item">
-                      <a class={stationary === "Stationary" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setStationary("Stationary")} href="#">Stationary</a>
+                      <a style={{ cursor: 'pointer' }} class={stationary === "Stationary" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setStationary("Stationary")} >Stationary</a>
                     </li>
                     <li class="nav-item">
-                      <a class={stationary === "Non-Stationary" ? "nav-link active" : "nav-link"} onClick={() => setStationary("Non-Stationary")} href="#">Non Stationary</a>
+                      <a style={{ cursor: 'pointer' }} class={stationary === "Non-Stationary" ? "nav-link active" : "nav-link"} onClick={() => setStationary("Non-Stationary")} >Non Stationary</a>
                     </li>
                   </ul> : null}
 
                 {univariate === "Bivariate" ?
                   <ul class="nav nav-underline">
                     <li class="nav-item">
-                      <a class={or === "or" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setOr("or")} href="#">Conditional Probability</a>
+                      <a style={{ cursor: 'pointer' }} class={or === "or" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setOr("or")} >Conditional Probability</a>
                     </li>
                     <li class="nav-item">
-                      <a class={or === "and" ? "nav-link active" : "nav-link"} onClick={() => setOr("and")} href="#">Join Probability</a>
+                      <a style={{ cursor: 'pointer' }} class={or === "and" ? "nav-link active" : "nav-link"} onClick={() => setOr("and")} >Join Probability</a>
                     </li>
                   </ul> : null}
 
                 {univariate === "Univariate" ?
                   <ul class="nav nav-underline">
                     <li class="nav-item">
-                      <a class={plotNum === 1 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(1)} href="#">RL(Discharge) Vs RP</a>
+                      <a style={{ cursor: 'pointer' }} class={plotNum === 1 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(1)} >RL(Discharge) Vs RP</a>
                     </li>
                     <li class="nav-item">
-                      <a class={plotNum === 2 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(2)} href="#">RL(Duration) Vs RP</a>
+                      <a style={{ cursor: 'pointer' }} class={plotNum === 2 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(2)} >RL(Duration) Vs RP</a>
                     </li>
                     <li class="nav-item">
-                      <a class={plotNum === 3 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(3)} href="#">RL(Volume) Vs RP</a>
+                      <a style={{ cursor: 'pointer' }} class={plotNum === 3 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(3)} >RL(Volume) Vs RP</a>
                     </li>
                   </ul> : null}
 
                 {univariate === "Bivariate" ?
                   <ul class="nav nav-underline">
                     <li class="nav-item">
-                      <a class={plotNum === 1 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(1)} href="#">Duration vs Peak</a>
+                      <a style={{ cursor: 'pointer' }} class={plotNum === 1 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(1)} >Duration vs Peak</a>
                     </li>
                     <li class="nav-item">
-                      <a class={plotNum === 2 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(2)} href="#">Volume vs Peak</a>
+                      <a style={{ cursor: 'pointer' }} class={plotNum === 2 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(2)} >Volume vs Peak</a>
                     </li>
                     <li class="nav-item">
-                      <a class={plotNum === 3 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(3)} href="#">Volume vs Duration</a>
+                      <a style={{ cursor: 'pointer' }} class={plotNum === 3 ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setPlotNum(3)} >Volume vs Duration</a>
                     </li>
                   </ul> : null}
 

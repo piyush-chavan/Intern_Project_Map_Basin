@@ -78,6 +78,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
 
 
   const loadExcel = async (fileUrl) => {
+    setData(undefined)
     try {
       const response = await fetch(fileUrl);
       if (!response.ok) {
@@ -135,7 +136,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
   return (
     <div>
       {data ?
-        <ResponsiveContainer width="100%" height={400} style={{ backgroundColor: 'white',marginTop:'20px' }} >
+        <ResponsiveContainer width="100%" minWidth='600px' height={400} style={{ backgroundColor: 'white',marginTop:'20px' }} >
           <ComposedChart data={data} style={{ padding: '20px' }}>
             <CartesianGrid stroke="#ccc" />
             <XAxis

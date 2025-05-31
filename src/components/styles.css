@@ -41,9 +41,14 @@
         /* font-size: 18px; */
         scale: 1.1;
         font-weight: 500;
-        color: #74512D;
+        color: #FEBA17;
     }
 
+}
+@media only screen and (min-width:800px) {
+    .NavLink:hover{
+        color: var(--primary);
+    }
 }
 
 .NavTitleLink {
@@ -57,7 +62,7 @@
 
 @media screen and (max-width:768px) {
     .NavTitleLink {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -82,6 +87,7 @@
     text-align: center;
     /* margin: 20px; */
     padding: 20px 8%;
+    position: relative;
 }
 
 .landingPageContainer::before {
@@ -92,7 +98,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 1000px;
+    height: 100%;
     width: 100%;
     opacity: 0.5;
     /* 👈 reduce only the background image */
@@ -125,7 +131,7 @@
 
 .devContainer {
     border-top: 2px solid;
-    margin-top: 20px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     background-color: var(--secondary);
@@ -146,6 +152,60 @@
 
 .imgBox {
     width: 500px;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 30%;
+}
+
+@keyframes appear {
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+.showOnMobile{
+    display: none;
+}
+.hideOnMobile{
+    display: block;
+}
+
+@media only screen  and (max-width:800px){
+    
+    .showOnMobile{
+        display: block;
+    }
+    .hideOnMobile{
+        display: none;
+    }
+}
+.sideNavbar{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: #FEBA17;
+    top: 0;
+    right: 0;
+    /* border-radius: 20px; */
+    justify-content: center;
+    width: 300px;
+    font-size: 20px;
+    align-items: center;
+    height: 100vh;
+    background-color: #9f2042a2;
+    backdrop-filter: blur(10px);
+    color: var(--background);
+}
+.sideNavlink{
+    padding: 10px 0;
+    border-bottom: 2px solid grey;
+}
+.linkcolor{
+    color: var(--secondary);
 }
 
 .leaflet-container {
@@ -163,6 +223,7 @@
     /* height: 80vh; */
     /* width: max(24%,300px); */
     padding: 50px 30px;
+    margin-bottom: 20px;
     background-color: var(--background);
     border-bottom-right-radius: 20px;
     box-shadow: 5px 5px 10px grey;
@@ -170,8 +231,9 @@
 }
 
 .dataContainer {
-    height: fit-content;
+    height: 90vh;
     top: 5vh;
+    overflow-y: auto;
     left: 15vw;
     z-index: 10000;
     box-shadow: 0 0 20px darkslategrey;
@@ -203,9 +265,8 @@
 .contactFormContainer {
     width: 50%;
     min-width: 360px;
-    margin: auto;
+    margin: 50px auto;
     padding: 30px;
-    margin-top: 50px;
     background-color: var(--secondary);
     background: linear-gradient(var(--primary), var(--secondary));
     box-shadow: 0 0 10px darkslategrey;
@@ -219,6 +280,9 @@
     box-shadow: 0 0 10px darkslategrey;
     border-radius: 20px;
     padding-bottom: 20px;
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 30%;
 }
 
 .memberimg {

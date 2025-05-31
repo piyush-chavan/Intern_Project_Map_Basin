@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import MapComponent from './components/MapComponent';
 import Contact from './components/Contact';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import Publication from './components/Publication';
 import Team from './components/Team';
 import Outreach from './components/Outreach';
