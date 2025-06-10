@@ -10,6 +10,7 @@ import Outreach from './components/Outreach';
 import Project from './components/Project';
 import Login from './components/Login';
 import ScrollToTop from './components/ScrollToTop';
+import Explore from './components/Explore';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/publications' element={<Publication />} />
           <Route path='/team' element={<Team />} />
           <Route path='/outreach' element={<Outreach />} />
+          <Route path='/explore' element={<Explore/>} />
         </Routes>
 
       </Router>

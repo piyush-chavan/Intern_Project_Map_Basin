@@ -220,7 +220,7 @@ function ExcelChartFromFile({ fileUrl, plot_no }) {
             />
           </ComposedChart>
         </ResponsiveContainer>
-        : <p>This graph is not available in database </p>}
+        : <> <p>Loading / Data for graph not available in database</p> <div className='spinner'></div> </>}
     </div>
   );
 }

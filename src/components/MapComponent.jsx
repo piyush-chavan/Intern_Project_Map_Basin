@@ -9,6 +9,7 @@ import { basins } from '../assets/data/basins.js'
 import ExcelChartFromFile from './Excel.jsx'
 import { indisGeojson } from '../assets/ShapeGeoJSON data/india_st.js'
 import { Navigate } from 'react-router-dom'
+import ContourPlot from './ContourPlot.jsx'
 
 
 
@@ -253,7 +254,7 @@ export default function MapComponent() {
                 position: 'absolute',
                 top: '120%',
                 left: '50%',
-                transform: 'translateX(-50%)',
+                transform: 'translateX(-80%)',
                 backgroundColor: '#333',
                 color: '#fff',
                 padding: '6px 10px',
@@ -262,9 +263,13 @@ export default function MapComponent() {
                 whiteSpace: 'nowrap',
                 zIndex: 100
               }}>
+                <b style={{color:'yellow',fontWeight:'500'}}>Univariate Graphs : </b> <br/>
                 RL : Return Level <br />
                 RP : Return Period <br />
                 CI : Confidence Interval <br />
+                <b style={{color:'yellow',fontWeight:'500'}}>Bivariavte Graphs : </b> <br/>
+                red line : Non-Stationary<br/>
+                black line : Stationary <br/>
               </div>
             )}
           </div>
@@ -295,7 +300,7 @@ export default function MapComponent() {
                       <a style={{ cursor: 'pointer' }} class={or === "or" ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => setOr("or")} >Conditional Probability</a>
                     </li>
                     <li class="nav-item">
-                      <a style={{ cursor: 'pointer' }} class={or === "and" ? "nav-link active" : "nav-link"} onClick={() => setOr("and")} >Join Probability</a>
+                      <a style={{ cursor: 'pointer' }} class={or === "and" ? "nav-link active" : "nav-link"} onClick={() => setOr("and")} >Joint Probability</a>
                     </li>
                   </ul> : null}
 
@@ -330,8 +335,20 @@ export default function MapComponent() {
                     {/* {stationary}
                     {univariate}
                     {plotNum} */}
+                    {
+                      univariate === "Univariate" ?
 
-                    <ExcelChartFromFile fileUrl={plot} plot_no={plotNum} />
+                        <ExcelChartFromFile fileUrl={plot} plot_no={plotNum} />
+                        :
+                        <ContourPlot 
+                        filePath={`${process.env.PUBLIC_URL}/bivariate data/${station}_Surf.xlsx`} 
+                        ScatterPath={`${process.env.PUBLIC_URL}/bivariate data/${station}_Scatter.xlsx`} 
+                        plot_no={plotNum}
+                        orand={or==="or"?0:1}
+                        
+                        />
+                    }
+
 
                     {/* <p>{plot}</p> */}
                   </>
