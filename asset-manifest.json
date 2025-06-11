@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Intern_Project_Map_Basin/static/css/main.34f6002f.css",
-    "main.js": "/Intern_Project_Map_Basin/static/js/main.66dd9927.js",
+    "main.css": "/Intern_Project_Map_Basin/static/css/main.d02f03ea.css",
+    "main.js": "/Intern_Project_Map_Basin/static/js/main.28c5b4b0.js",
     "static/js/453.d1a86e40.chunk.js": "/Intern_Project_Map_Basin/static/js/453.d1a86e40.chunk.js",
     "static/media/large-tsunami-wave-crashing-into-city.jpg": "/Intern_Project_Map_Basin/static/media/large-tsunami-wave-crashing-into-city.6eeb317a2f2e8f832196.jpg",
     "static/media/historic_flood.png": "/Intern_Project_Map_Basin/static/media/historic_flood.65549c4996e714cefa79.png",
@@ -52,12 +52,12 @@
     "static/media/visit_10.jpg": "/Intern_Project_Map_Basin/static/media/visit_10.553e1272a6fb8e7b2103.jpg",
     "static/media/nrf_logo.png": "/Intern_Project_Map_Basin/static/media/nrf_logo.4ad118653e600abd5197.png",
     "index.html": "/Intern_Project_Map_Basin/index.html",
-    "main.34f6002f.css.map": "/Intern_Project_Map_Basin/static/css/main.34f6002f.css.map",
-    "main.66dd9927.js.map": "/Intern_Project_Map_Basin/static/js/main.66dd9927.js.map",
+    "main.d02f03ea.css.map": "/Intern_Project_Map_Basin/static/css/main.d02f03ea.css.map",
+    "main.28c5b4b0.js.map": "/Intern_Project_Map_Basin/static/js/main.28c5b4b0.js.map",
     "453.d1a86e40.chunk.js.map": "/Intern_Project_Map_Basin/static/js/453.d1a86e40.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.34f6002f.css",
-    "static/js/main.66dd9927.js"
+    "static/css/main.d02f03ea.css",
+    "static/js/main.28c5b4b0.js"
   ]
 }
