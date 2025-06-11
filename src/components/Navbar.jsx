@@ -5,16 +5,21 @@ import { Link, useNavigate } from 'react-router-dom'
 export default function Navbar() {
   const [userName, setUserName] = useState('')
   const [sidebar, setSidebar] = useState(false)
+  const [user, setUser] = useState(null);
+  const [showProfile,setShowProfile] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("auth");
     localStorage.removeItem("userName");
     localStorage.removeItem("userEmail");
+    localStorage.removeItem("user");
     window.location.reload();
   };
   useEffect(() => {
     const userName = localStorage.getItem("userName");
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
     setUserName(userName)
   }, [])
 
@@ -33,7 +38,18 @@ export default function Navbar() {
           {isMobile ? <><i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group</>
             : <> <i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group : Web-Tool for Design Flood </>}
         </Link>
-        {userName && !isMobile ? <span className='NavTitleLink'><i class="fa-solid fa-user"></i> {userName}</span> : null}
+        {user && !isMobile ? 
+        <div style={{position:'relative'}}>
+
+          <span style={{cursor:'pointer'}} className='NavTitleLink'><i class="fa-solid fa-user-circle" onClick={()=>setShowProfile(!showProfile)}></i></span>
+          {showProfile?
+          <div className='profileBox'>
+            <img style={{borderRadius:'50%',margin:'auto'}} width='50px' src={user.picture} alt="" />
+            <p><i class="fa-solid fa-user"></i> {user.name}</p>
+            <p><i class="fa-solid fa-envelope"></i> {user.email}</p>
+          </div>:null}
+        </div>
+         : null}
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'stretch', backgroundColor: 'var(--secondary)', borderRadius: '16px' }}>
         {!isMobile && <div className='hideOnMobile' style={{ margin: 'auto 0', padding: 0, display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -49,7 +65,7 @@ export default function Navbar() {
         </div>}
         {isMobile && <div className='showOnMobile' style={{ margin: 'auto 0', padding: '0 10px', display: 'flex', flexWrap: 'wrap', alignItems: 'center' }} onClick={() => setSidebar(!sidebar)}><i class="fa-solid fa-bars"></i></div>}
         <div>
-          {userName ?
+          {user ?
             <button onClick={handleLogout} className='btn btn-link text-danger' style={{ marginRight: 'auto', textDecoration: 'none', fontWeight: '500' }}> <i class="fa-solid fa-right-from-bracket"></i> LogOut</button>
             : <button onClick={() => navigate('/login')} className='btn btn-link text-success' style={{ marginRight: 'auto', textDecoration: 'none', fontWeight: '500' }}> <i class="fa-solid fa-right-to-bracket"></i> Login</button>
           }

@@ -149,7 +149,7 @@ export default function MapComponent() {
     }
   }, [station, stationary, or, univariate, plotNum])
 
-  const isAuthenticated = localStorage.getItem("auth");
+  const isAuthenticated = localStorage.getItem("user");
   if (!isAuthenticated) {
     return <Navigate to="/login" />
   }

@@ -2,6 +2,8 @@
 import { useNavigate } from "react-router-dom";
 import './styles.css';
 import { useState } from "react";
+import GoogleLogin from "./GoogleLogin";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 function Login() {
     const navigate = useNavigate();
@@ -36,6 +38,9 @@ function Login() {
                 </div>
 
                 <button className="btn btn-dark" onClick={handleLogin}>Login</button>
+
+                {/* <GoogleLogin/> */}
+                <GoogleLoginButton/>
             </div>
         </div>
     );

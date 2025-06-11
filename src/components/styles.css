@@ -353,3 +353,19 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.profileBox{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: max-content;
+    color: var(--secondary);
+    font-size: 20px;
+    font-weight: 500;
+    padding: 20px;
+    border: 2px solid var(--secondary);
+    border-radius: 20px;
+    background-color: #9f204292;
+    backdrop-filter: blur(10px);
+
+}
