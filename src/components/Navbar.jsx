@@ -36,7 +36,9 @@ export default function Navbar() {
         <Link to="/" className="NavTitleLink" >
           {/* <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" /> */}
           {isMobile ? <><i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group</>
-            : <> <i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group : Web-Tool for Design Flood </>}
+            :<>
+            <img width='32px' style={{borderRadius:'50%'}} src={require('../assets/images/circle-logo.png')} alt="" />
+              Water Extremes Research Group : Web-Tool for Design Flood </>}
         </Link>
         {user && !isMobile ? 
         <div style={{position:'relative'}}>
@@ -72,8 +74,11 @@ export default function Navbar() {
         </div>
         {sidebar && isMobile ? <div className="sideNavbar showOnMobile">
           <div className='showOnMobile' style={{ position: 'absolute', top: 10, left: 10 }} onClick={() => setSidebar(!sidebar)}><i class="fa-solid fa-xmark"></i></div>
-          <div className="sideNavlink">
-            <span className='NavTitleLink'><i class="fa-solid fa-user"></i> {userName}</span>
+          <div style={{textAlign:'center'}}>
+            <img style={{borderRadius:'50%',margin:'auto'}} width='50px' src={user.picture} alt="" />
+            <br /> 
+            <p><i class="fa-solid fa-user"></i> {user.name}</p>
+            <p style={{fontSize:'16px'}}><i class="fa-solid fa-envelope"></i> {user.email}</p>
           </div>
           <div className='sideNavlink' >
             <Link to="/" className="NavLink linkcolor">Home</Link>

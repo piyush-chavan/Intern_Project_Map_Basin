@@ -94,7 +94,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url('/public/large-tsunami-wave-crashing-into-city.jpg');
+    /* background-image: url('/public/large-tsunami-wave-crashing-into-city.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

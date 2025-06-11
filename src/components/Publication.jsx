@@ -20,9 +20,8 @@ export default function Publication() {
 
       /> */}
 
-      <HtmlPlot source={`${process.env.PUBLIC_URL}/interactive_plot.html`}/>
 
-            <HtmlPlot source={`${process.env.PUBLIC_URL}/my_interactive_plot.html`}/>
+      <HtmlPlot source={`${process.env.PUBLIC_URL}/my_interactive_plot.html`} />
 
 
 

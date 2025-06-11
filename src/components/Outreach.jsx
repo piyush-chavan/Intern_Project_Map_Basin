@@ -30,7 +30,7 @@ export default function Outreach() {
         </div>
 
         <br /><br />
-        <p className='title_2' style={{ textAlign: 'start', color: 'red' }} >Upcoming Events </p>
+        {/* <p className='title_2' style={{ textAlign: 'start', color: 'red' }} >Upcoming Events </p> */}
         <p className='normalText'><b >Session 2: 20th May 2025<br></br>
           SAFE 2025: Strategies for Adaptive Flood Estimation</b><br></br>
           The Department of Civil Engineering at IIT Roorkee is delighted to extend a warm invitation to an ANRF-sponsored one-day workshop titled <b>“SAFE: Strategies for Adaptive Flood Estimation”.</b> This insightful event is scheduled for <b>Tuesday, May 20, 2025, from 09:30 AM to 05:00 PM </b>at the Department of Civil Engineering, IIT Roorkee.

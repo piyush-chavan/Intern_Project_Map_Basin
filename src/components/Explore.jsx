@@ -3,7 +3,7 @@ import { useNavigate,Navigate } from 'react-router-dom';
 
 export default function Explore() {
     const navigate1 = useNavigate();
-    const isAuthenticated = localStorage.getItem("auth");
+    const isAuthenticated = localStorage.getItem("user");
         if (!isAuthenticated) {
             return <Navigate to="/login" />
         }

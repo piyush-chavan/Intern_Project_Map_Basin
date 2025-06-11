@@ -10,6 +10,7 @@ import ExcelChartFromFile from './Excel.jsx'
 import { indisGeojson } from '../assets/ShapeGeoJSON data/india_st.js'
 import { Navigate } from 'react-router-dom'
 import ContourPlot from './ContourPlot.jsx'
+import {india} from '../assets/ShapeGeoJSON data/INDIA_STATES.js'
 
 
 
@@ -96,7 +97,7 @@ export default function MapComponent() {
   const [stationShape, setStationShape] = useState(null)
   const [mode, setMode] = useState("State")
   const [mapurl, setMapurl] = useState(0)
-  const [zoom, setZoom] = useState(5)
+  const [zoom, setZoom] = useState(4)
   const [show, setShow] = useState(false);
   const [availableStations, setavailableStations] = useState(null)
 
@@ -224,12 +225,12 @@ export default function MapComponent() {
           <button onClick={() => setPopup(true)} className='btn btn-dark'> <i class="fa-solid fa-eye"></i> See Plots</button>
 
         </div>
-        <MapContainer center={center} zoom={6} >
+        <MapContainer center={center} zoom={10} >
           <TileLayer
             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url={mapBackgrounds[mapurl]}
           />
-          <GeoJSON data={indisGeojson} style={{ color: 'green', weight: 2 }} />
+          <GeoJSON data={india} style={{ color: 'green', weight: 2 }} />
           {modeshape && mode === "Basin" && <GeoJSON key={basin} data={modeshape} style={{ color: 'purple', weight: 2 }} />}
           {/* {stationShape && <GeoJSON key={station} data={stationShape} style={{ color: 'green', weight: 2 }} />} */}
           <ZoomToLayer geojson={modeshape} />
