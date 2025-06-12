@@ -92,6 +92,24 @@ const ContourPlot = ({
                         : null
                 )
             );
+            // const zFiltered = z.map(row =>
+            //     row.map(val => {
+            //         // Find the closest allowed value within tolerance
+            //         let closest = null;
+            //         let minDiff = Infinity;
+
+            //         for (let target of allowedZValues) {
+            //             const diff = Math.abs(val - target);
+            //             if (diff <= tolerance && diff < minDiff) {
+            //                 minDiff = diff;
+            //                 closest = target;
+            //             }
+            //         }
+
+            //         return closest !== null ? closest : null;
+            //     })
+            // );
+
             const zFiltered1 = z1.map((row) =>
                 row.map((val) =>
                     allowedZValues.some(
@@ -168,11 +186,11 @@ const ContourPlot = ({
             var step = divideBy;
             const tickvals = [];
             const ticktext = [];
-            if(maxVal>100000){step=20000}
-            else if(maxVal<20000){step=2500}
-            else if(maxVal<40000){step=5000}
-            else{step=10000}
-            for (let i = 0; i <= maxVal; i +=  step) {
+            if (maxVal > 100000) { step = 20000 }
+            else if (maxVal < 20000) { step = 2500 }
+            else if (maxVal < 40000) { step = 5000 }
+            else { step = 10000 }
+            for (let i = 0; i <= maxVal; i += step) {
                 tickvals.push(i);
                 ticktext.push((i / divideBy).toString());
             }

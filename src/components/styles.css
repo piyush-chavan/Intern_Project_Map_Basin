@@ -88,6 +88,8 @@
     /* margin: 20px; */
     padding: 20px 8%;
     position: relative;
+    /* background-color: #a77ee575; */
+    background: linear-gradient(var(--primary), var(--secondary));
 }
 
 .landingPageContainer::before {
@@ -368,4 +370,23 @@
     background-color: #9f204292;
     backdrop-filter: blur(10px);
 
+}
+
+.wave-text {
+  font-size: 2.5rem;
+  color: #007BFF;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  background: linear-gradient(to right, #007BFF, #00BFFF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }

@@ -37,7 +37,7 @@ function Login() {
                     <input onChange={(e) => setEmail(e.target.value)} type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                 </div>
 
-                <button className="btn btn-dark" onClick={handleLogin}>Login</button>
+                {/* <button className="btn btn-dark" onClick={handleLogin}>Login</button> */}
 
                 {/* <GoogleLogin/> */}
                 <GoogleLoginButton/>
