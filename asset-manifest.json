@@ -1,30 +1,23 @@
 {
   "files": {
-    "main.css": "/Intern_Project_Map_Basin/static/css/main.3c887aa5.css",
-    "main.js": "/Intern_Project_Map_Basin/static/js/main.4aa838c6.js",
+    "main.css": "/Intern_Project_Map_Basin/static/css/main.54a5e851.css",
+    "main.js": "/Intern_Project_Map_Basin/static/js/main.84c4034c.js",
     "static/js/453.d1a86e40.chunk.js": "/Intern_Project_Map_Basin/static/js/453.d1a86e40.chunk.js",
     "static/media/historic_flood.png": "/Intern_Project_Map_Basin/static/media/historic_flood.65549c4996e714cefa79.png",
     "static/media/ce_iitr.jpg": "/Intern_Project_Map_Basin/static/media/ce_iitr.7958c8c724ab2fe26219.jpg",
     "static/media/futuristic_flood.png": "/Intern_Project_Map_Basin/static/media/futuristic_flood.913d61ee00c174946721.png",
-    "static/media/circle-logo.png": "/Intern_Project_Map_Basin/static/media/circle-logo.65bed627068d8029db34.png",
     "static/media/workshop_schedule.jpg": "/Intern_Project_Map_Basin/static/media/workshop_schedule.b66ea8d8b8dd1c095f04.jpg",
-    "static/media/8.png": "/Intern_Project_Map_Basin/static/media/8.474877ebf2b2e1932c04.png",
     "static/media/outreach_2.jpg": "/Intern_Project_Map_Basin/static/media/outreach_2.f3c28362711018c42bb9.jpg",
     "static/media/outreach_1.jpg": "/Intern_Project_Map_Basin/static/media/outreach_1.d0a792c1c07f9ba3d289.jpg",
-    "static/media/1.png": "/Intern_Project_Map_Basin/static/media/1.3d24f0838393ed1c6052.png",
     "static/media/visit_2.jpg": "/Intern_Project_Map_Basin/static/media/visit_2.cd2df77e6900d927cf15.jpg",
     "static/media/visit_3.jpg": "/Intern_Project_Map_Basin/static/media/visit_3.2f97ddd88c575aeededd.jpg",
-    "static/media/4.png": "/Intern_Project_Map_Basin/static/media/4.30fd1c84281e3d207739.png",
-    "static/media/2.png": "/Intern_Project_Map_Basin/static/media/2.807c8e5fec2c0cbed098.png",
     "static/media/Inaugral_8.jpg": "/Intern_Project_Map_Basin/static/media/Inaugral_8.a7cbcc3c069dfa224b05.jpg",
-    "static/media/5.png": "/Intern_Project_Map_Basin/static/media/5.5090ca2fe3f23350cae5.png",
     "static/media/Inaugral_5.jpg": "/Intern_Project_Map_Basin/static/media/Inaugral_5.ac2281dc4ca302ecb178.jpg",
     "static/media/Closing_3.jpg": "/Intern_Project_Map_Basin/static/media/Closing_3.8bc2421353a7da92487c.jpg",
     "static/media/visit_9.jpg": "/Intern_Project_Map_Basin/static/media/visit_9.89d06c0f1b0cd5d22138.jpg",
     "static/media/visit_5.jpg": "/Intern_Project_Map_Basin/static/media/visit_5.6fcf5f7ab6d8de640719.jpg",
     "static/media/Inaugral_6.jpg": "/Intern_Project_Map_Basin/static/media/Inaugral_6.8b6eff12c4b14e3c151a.jpg",
     "static/media/visit_4.jpg": "/Intern_Project_Map_Basin/static/media/visit_4.74c5df975744ccf3e229.jpg",
-    "static/media/6.png": "/Intern_Project_Map_Basin/static/media/6.411875425f14f6a0a22c.png",
     "static/media/Closing_10.jpg": "/Intern_Project_Map_Basin/static/media/Closing_10.afd1c869c2af3beb1d0f.jpg",
     "static/media/visit_1.jpg": "/Intern_Project_Map_Basin/static/media/visit_1.c7c3ce230048c09f1d0d.jpg",
     "static/media/Closing_6.jpg": "/Intern_Project_Map_Basin/static/media/Closing_6.24a7dc8268fe0a6d5212.jpg",
@@ -54,16 +47,14 @@
     "static/media/Inaugral_2.jpg": "/Intern_Project_Map_Basin/static/media/Inaugral_2.19271befbf5354768942.jpg",
     "static/media/Inaugral_1.jpg": "/Intern_Project_Map_Basin/static/media/Inaugral_1.af20802d4420b60531cb.jpg",
     "static/media/visit_10.jpg": "/Intern_Project_Map_Basin/static/media/visit_10.553e1272a6fb8e7b2103.jpg",
-    "static/media/3.png": "/Intern_Project_Map_Basin/static/media/3.7a4111ed429a6b965100.png",
-    "static/media/7.png": "/Intern_Project_Map_Basin/static/media/7.7dd0497908fa9e947546.png",
     "static/media/nrf_logo.png": "/Intern_Project_Map_Basin/static/media/nrf_logo.4ad118653e600abd5197.png",
     "index.html": "/Intern_Project_Map_Basin/index.html",
-    "main.3c887aa5.css.map": "/Intern_Project_Map_Basin/static/css/main.3c887aa5.css.map",
-    "main.4aa838c6.js.map": "/Intern_Project_Map_Basin/static/js/main.4aa838c6.js.map",
+    "main.54a5e851.css.map": "/Intern_Project_Map_Basin/static/css/main.54a5e851.css.map",
+    "main.84c4034c.js.map": "/Intern_Project_Map_Basin/static/js/main.84c4034c.js.map",
     "453.d1a86e40.chunk.js.map": "/Intern_Project_Map_Basin/static/js/453.d1a86e40.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c887aa5.css",
-    "static/js/main.4aa838c6.js"
+    "static/css/main.54a5e851.css",
+    "static/js/main.84c4034c.js"
   ]
 }
