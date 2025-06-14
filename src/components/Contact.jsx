@@ -34,6 +34,23 @@ const Contact = () => {
             'pnLP3RdG6_TKNjt_m'         // your public key
         )
             .then(() => {
+                // alert('Message sent!');
+                
+            }, (error) => {
+                console.error('Email sending error:', error);
+                alert('Failed to send message.');
+            });
+    };
+    const sendEmail1 = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm(
+            'service_sluvtfg',      // your service ID
+            'template_5gub5po',      // your template ID
+            form.current,
+            'zKeY7mQTb0Adu2uvV'         // your public key
+        )
+            .then(() => {
                 alert('Message sent!');
             }, (error) => {
                 console.error('Email sending error:', error);
@@ -49,7 +66,7 @@ const Contact = () => {
             </div>
             <div className="contactFormContainer">
 
-                <form ref={form} onSubmit={sendEmail}>
+                <form ref={form} onSubmit={(e)=>{sendEmail(e);sendEmail1(e)}}>
 
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
@@ -60,6 +77,10 @@ const Contact = () => {
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
                         <input required type="email" name='email' class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Subject</span>
+                        <input required type="text" name='title' class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                     </div>
 
 

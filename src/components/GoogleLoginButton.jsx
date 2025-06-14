@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const GoogleLoginButton = () => {
   const web_app_url = "https://script.google.com/macros/s/AKfycbyE7u3MgHSNXCjRQ_PURH7J8UcHwfUtKmPi1sMO-L54kfJfFLvjlKY2VyZHjxg8lgQK6w/exec";
 
-  const sendToSheet = async (user) => {
+  const sendToSheet = async (user,web_app_url) => {
     await fetch(web_app_url, {
       method: "POST",
       mode: "no-cors", // Required for frontend-only
@@ -29,7 +29,7 @@ const GoogleLoginButton = () => {
     const token = credentialResponse.credential;
     const user = jwtDecode(token);
     console.log("User info:", user);
-    sendToSheet(user);
+    sendToSheet(user,web_app_url);
     // Save to localStorage
     localStorage.setItem("user", JSON.stringify(user));
     // alert("Login successful!");

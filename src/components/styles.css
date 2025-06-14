@@ -89,7 +89,7 @@
     padding: 20px 8%;
     position: relative;
     /* background-color: #a77ee575; */
-    background: linear-gradient(var(--primary), var(--secondary));
+    background: linear-gradient(var(--primary), var(--secondary),var(--secondary));
 }
 
 .landingPageContainer::before {
@@ -237,12 +237,12 @@
     height: 90vh;
     top: 5vh;
     overflow-y: scroll;
-    left: 15vw;
+    left: 10vw;
     z-index: 10000;
     box-shadow: 0 0 20px darkslategrey;
     position: fixed;
     border-radius: 20px;
-    width: max(400px,70vw);
+    width: max(400px,80vw);
     padding: 30px 30px;
     background-color: lightgoldenrodyellow;
     scrollbar-width: thin;

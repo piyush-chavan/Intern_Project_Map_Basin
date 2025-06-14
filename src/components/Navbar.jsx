@@ -6,18 +6,18 @@ export default function Navbar() {
   const [userName, setUserName] = useState('')
   const [sidebar, setSidebar] = useState(false)
   const [user, setUser] = useState(null);
-  const [showProfile,setShowProfile] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("auth");
-    localStorage.removeItem("userName");
-    localStorage.removeItem("userEmail");
+    // localStorage.removeItem("auth");
+    // localStorage.removeItem("userName");
+    // localStorage.removeItem("userEmail");
     localStorage.removeItem("user");
     window.location.reload();
   };
   useEffect(() => {
-    const userName = localStorage.getItem("userName");
+    // const userName = localStorage.getItem("userName");
     const user = JSON.parse(localStorage.getItem("user"));
     setUser(user);
     setUserName(userName)
@@ -35,23 +35,23 @@ export default function Navbar() {
       <div className='NavTitle'>
         <Link to="/" className="NavTitleLink" >
           {/* <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" /> */}
-          {isMobile ? <><i class="fa-solid fa-house-flood-water"></i>  Water Extremes Research Group</>
-            :<>
-            <img width='32px' style={{borderRadius:'50%'}} src={require('../assets/images/circle-logo.png')} alt="" />
+          {isMobile ? <> Water Extremes Research Group</>
+            : <>
+              {/* <img width='32px' style={{borderRadius:'50%'}} src={require('../assets/images/circle-logo.png')} alt="" /> */}
               Water Extremes Research Group : Web-Tool for Design Flood </>}
         </Link>
-        {user && !isMobile ? 
-        <div style={{position:'relative'}}>
+        {user && !isMobile ?
+          <div style={{ position: 'relative' }}>
 
-          <span style={{cursor:'pointer'}} className='NavTitleLink'><i class="fa-solid fa-user-circle" onClick={()=>setShowProfile(!showProfile)}></i></span>
-          {showProfile?
-          <div className='profileBox'>
-            <img style={{borderRadius:'50%',margin:'auto'}} width='50px' src={user.picture} alt="" />
-            <p><i class="fa-solid fa-user"></i> {user.name}</p>
-            <p><i class="fa-solid fa-envelope"></i> {user.email}</p>
-          </div>:null}
-        </div>
-         : null}
+            <span style={{ cursor: 'pointer' }} className='NavTitleLink'><i class="fa-solid fa-user-circle" onClick={() => setShowProfile(!showProfile)}></i></span>
+            {showProfile ?
+              <div className='profileBox'>
+                <img style={{ borderRadius: '50%', margin: 'auto' }} width='50px' src={user.picture} alt="" />
+                <p><i class="fa-solid fa-user"></i> {user.name}</p>
+                <p><i class="fa-solid fa-envelope"></i> {user.email}</p>
+              </div> : null}
+          </div>
+          : null}
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'stretch', backgroundColor: 'var(--secondary)', borderRadius: '16px' }}>
         {!isMobile && <div className='hideOnMobile' style={{ margin: 'auto 0', padding: 0, display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -74,12 +74,12 @@ export default function Navbar() {
         </div>
         {sidebar && isMobile ? <div className="sideNavbar showOnMobile">
           <div className='showOnMobile' style={{ position: 'absolute', top: 10, left: 10 }} onClick={() => setSidebar(!sidebar)}><i class="fa-solid fa-xmark"></i></div>
-          <div style={{textAlign:'center'}}>
-            <img style={{borderRadius:'50%',margin:'auto'}} width='50px' src={user.picture} alt="" />
-            <br /> 
+          {user && <div style={{ textAlign: 'center' }}>
+            <img style={{ borderRadius: '50%', margin: 'auto' }} width='50px' src={user.picture} alt="" />
+            <br />
             <p><i class="fa-solid fa-user"></i> {user.name}</p>
-            <p style={{fontSize:'16px'}}><i class="fa-solid fa-envelope"></i> {user.email}</p>
-          </div>
+            <p style={{ fontSize: '16px' }}><i class="fa-solid fa-envelope"></i> {user.email}</p>
+          </div>}
           <div className='sideNavlink' >
             <Link to="/" className="NavLink linkcolor">Home</Link>
           </div>
