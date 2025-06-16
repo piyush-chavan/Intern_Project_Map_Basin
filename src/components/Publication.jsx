@@ -21,9 +21,9 @@ export default function Publication() {
       /> */}
 
 
-      <HtmlPlot source={`${process.env.PUBLIC_URL}/my_interactive_plot.html`} />
+      {/* <HtmlPlot source={`${process.env.PUBLIC_URL}/my_interactive_plot.html`} /> */}
 
-          <iframe src="https://www.weatherandradar.in/weather-map/delhi/18252928?center=22.2,79.36&placemark=28.6551,77.1948&zoom=5.04&layer=wr" width="50%" height="600px" style={{border:'2px solid black'}} ></iframe>
+          {/* <iframe src="https://www.weatherandradar.in/weather-map/delhi/18252928?center=22.2,79.36&placemark=28.6551,77.1948&zoom=5.04&layer=wr" width="50%" height="600px" style={{border:'2px solid black'}} ></iframe> */}
 
 
       <Footer />

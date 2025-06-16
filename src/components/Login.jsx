@@ -27,7 +27,7 @@ function Login() {
             <div className="loginBox">
 
 
-                <div class="input-group mb-3">
+                {/* <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Your Name</span>
                     <input onChange={(e) => setName(e.target.value)} type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                 </div>
@@ -35,7 +35,9 @@ function Login() {
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
                     <input onChange={(e) => setEmail(e.target.value)} type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
-                </div>
+                </div> */}
+
+                <p className="title_2" style={{color:'var(--secondary)'}}>Sign in with Google to Continue ...</p>
 
                 {/* <button className="btn btn-dark" onClick={handleLogin}>Login</button> */}
 
