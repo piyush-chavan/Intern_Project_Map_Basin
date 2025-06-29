@@ -30,6 +30,7 @@ export default function Navbar() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
   return (
     <div className='Navbar'>
       <div className='NavTitle'>
@@ -45,11 +46,15 @@ export default function Navbar() {
 
             <span style={{ cursor: 'pointer' }} className='NavTitleLink'><i class="fa-solid fa-user-circle" onClick={() => setShowProfile(!showProfile)}></i></span>
             {showProfile ?
-              <div className='profileBox'>
-                <img style={{ borderRadius: '50%', margin: 'auto' }} width='50px' src={user.picture} alt="" />
-                <p><i class="fa-solid fa-user"></i> {user.name}</p>
-                <p><i class="fa-solid fa-envelope"></i> {user.email}</p>
-              </div> : null}
+              <>
+                <div onClick={() => setShowProfile(false)} style={{ position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}></div>
+                <div className='profileBox'>
+                  <img style={{ borderRadius: '50%', margin: 'auto' }} width='50px' src={user.picture} alt="" />
+                  <p><i class="fa-solid fa-user"></i> {user.name}</p>
+                  <p><i class="fa-solid fa-envelope"></i> {user.email}</p>
+                </div>
+              </>
+              : null}
           </div>
           : null}
       </div>
@@ -72,36 +77,38 @@ export default function Navbar() {
             : <button onClick={() => navigate('/login')} className='btn btn-link text-success' style={{ marginRight: 'auto', textDecoration: 'none', fontWeight: '500' }}> <i class="fa-solid fa-right-to-bracket"></i> Login</button>
           }
         </div>
-        {sidebar && isMobile ? <div className="sideNavbar showOnMobile">
-          <div className='showOnMobile' style={{ position: 'absolute', top: 10, left: 10 }} onClick={() => setSidebar(!sidebar)}><i class="fa-solid fa-xmark"></i></div>
-          {user && <div style={{ textAlign: 'center' }}>
-            <img style={{ borderRadius: '50%', margin: 'auto' }} width='50px' src={user.picture} alt="" />
-            <br />
-            <p><i class="fa-solid fa-user"></i> {user.name}</p>
-            <p style={{ fontSize: '16px' }}><i class="fa-solid fa-envelope"></i> {user.email}</p>
-          </div>}
-          <div className='sideNavlink' >
-            <Link to="/" className="NavLink linkcolor">Home</Link>
-          </div>
-          <div className='sideNavlink' >
-            <Link to="/team" className="NavLink linkcolor">Team</Link> <br />
-          </div>
-          <div className='sideNavlink' >
-            <Link to="/project" className='NavLink linkcolor'>Project</Link> <br />
-          </div>
-          <div className='sideNavlink' >
-            <Link to="/outreach" className="NavLink linkcolor">Outreach</Link>
-          </div>
-          <div className='sideNavlink' >
-            <Link to="/publications" className="NavLink linkcolor">Publications</Link>
-          </div>
-          <div className='sideNavlink' >
-            <Link to="https://faculty.iitr.ac.in/~vinnarasi/" target='_blank' className='NavLink linkcolor' >Research Group</Link>
-          </div>
-          <div className='sideNavlink' >
-            <Link to="/contact" className="NavLink linkcolor">Help</Link>
-          </div>
-        </div> : null}
+        {sidebar && isMobile ? <>
+          <div className='showOnMobile' onClick={() => setSidebar(false)} style={{ position: 'fixed', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}></div>
+          <div className="sideNavbar showOnMobile">
+            <div className='showOnMobile' style={{ position: 'absolute', top: 10, left: 10 }} onClick={() => setSidebar(!sidebar)}><i class="fa-solid fa-xmark"></i></div>
+            {user && <div style={{ textAlign: 'center' }}>
+              <img style={{ borderRadius: '50%', margin: 'auto' }} width='50px' src={user.picture} alt="" />
+              <br />
+              <p><i class="fa-solid fa-user"></i> {user.name}</p>
+              <p style={{ fontSize: '16px' }}><i class="fa-solid fa-envelope"></i> {user.email}</p>
+            </div>}
+            <div className='sideNavlink' >
+              <Link to="/" className="NavLink linkcolor">Home</Link>
+            </div>
+            <div className='sideNavlink' >
+              <Link to="/team" className="NavLink linkcolor">Team</Link> <br />
+            </div>
+            <div className='sideNavlink' >
+              <Link to="/project" className='NavLink linkcolor'>Project</Link> <br />
+            </div>
+            <div className='sideNavlink' >
+              <Link to="/outreach" className="NavLink linkcolor">Outreach</Link>
+            </div>
+            <div className='sideNavlink' >
+              <Link to="/publications" className="NavLink linkcolor">Publications</Link>
+            </div>
+            <div className='sideNavlink' >
+              <Link to="https://faculty.iitr.ac.in/~vinnarasi/" target='_blank' className='NavLink linkcolor' >Research Group</Link>
+            </div>
+            <div className='sideNavlink' >
+              <Link to="/contact" className="NavLink linkcolor">Help</Link>
+            </div>
+          </div> </> : null}
       </div>
 
     </div>

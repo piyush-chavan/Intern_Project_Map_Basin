@@ -10,7 +10,7 @@ import ExcelChartFromFile from './Excel.jsx'
 import { indisGeojson } from '../assets/ShapeGeoJSON data/india_st.js'
 import { Navigate } from 'react-router-dom'
 import ContourPlot from './ContourPlot.jsx'
-import {india} from '../assets/ShapeGeoJSON data/INDIA_STATES.js'
+import { india } from '../assets/ShapeGeoJSON data/INDIA_STATES.js'
 
 
 
@@ -230,11 +230,26 @@ export default function MapComponent() {
             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url={mapBackgrounds[mapurl]}
           />
-          <GeoJSON data={india} style={{ color: 'green', weight: 2 }} />
+
+          {
+            mode === "State" ?
+              <>
+                <GeoJSON data={india} style={{ color: 'green', weight: 2 }} />
+                <ChangeCenter key={center} center={center} zoom={zoom} />
+                <Marker position={center}>
+                  <Popup>
+                    {state}
+                  </Popup>
+                </Marker>
+
+              </>
+              : <ZoomToLayer geojson={modeshape} />
+            //  <GeoJSON data={BASIN_CWC} style={{ color: 'yellow', weight: 2 }} />
+          }
+
           {modeshape && mode === "Basin" && <GeoJSON key={basin} data={modeshape} style={{ color: 'purple', weight: 2 }} />}
           {/* {stationShape && <GeoJSON key={station} data={stationShape} style={{ color: 'green', weight: 2 }} />} */}
-          <ZoomToLayer geojson={modeshape} />
-          <ChangeCenter center={center} zoom={zoom} />
+
           <ZoomControlledDots coordinates={availableStations} clickhandle={handleStationPointClick} />
 
         </MapContainer>
@@ -264,13 +279,13 @@ export default function MapComponent() {
                 whiteSpace: 'nowrap',
                 zIndex: 100
               }}>
-                <b style={{color:'yellow',fontWeight:'500'}}>Univariate Graphs : </b> <br/>
+                <b style={{ color: 'yellow', fontWeight: '500' }}>Univariate Graphs : </b> <br />
                 RL : Return Level <br />
                 RP : Return Period <br />
                 CI : Confidence Interval <br />
-                <b style={{color:'yellow',fontWeight:'500'}}>Bivariavte Graphs : </b> <br/>
-                red line : Non-Stationary<br/>
-                black line : Stationary <br/>
+                <b style={{ color: 'yellow', fontWeight: '500' }}>Bivariavte Graphs : </b> <br />
+                red line : Non-Stationary<br />
+                black line : Stationary <br />
               </div>
             )}
           </div>
@@ -341,12 +356,12 @@ export default function MapComponent() {
 
                         <ExcelChartFromFile fileUrl={plot} plot_no={plotNum} />
                         :
-                        <ContourPlot 
-                        filePath={`${process.env.PUBLIC_URL}/bivariate data/${station}_Surf.xlsx`} 
-                        ScatterPath={`${process.env.PUBLIC_URL}/bivariate data/${station}_Scatter.xlsx`} 
-                        plot_no={plotNum}
-                        orand={or==="or"?0:1}
-                        
+                        <ContourPlot
+                          filePath={`${process.env.PUBLIC_URL}/bivariate data/${station}_Surf.xlsx`}
+                          ScatterPath={`${process.env.PUBLIC_URL}/bivariate data/${station}_Scatter.xlsx`}
+                          plot_no={plotNum}
+                          orand={or === "or" ? 0 : 1}
+
                         />
                     }
 

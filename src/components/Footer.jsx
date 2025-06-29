@@ -20,24 +20,29 @@ export default function Footer() {
                 <p className='title_2' style={{ fontSize: '1.5rem' }}>
                     {/* <img style={{ width: '1.5rem', borderRadius: '1rem' }} src={require("../assets/images/prime_logo.jpg")} alt="" /> */}
                     <i class="fa-solid fa-house-flood-water"></i> Water Extremes Research Group : Web Tool for Design Flood</p>
-                <div style={{ display: 'flex',flexWrap:'wrap',justifyContent:'space-between' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
 
-                    <div style={{ minWidth:'min(400px,100%)' }}>
+                    <div style={{ minWidth: 'min(600px,100%)', display: 'flex', justifyContent: 'space-between',flexWrap:'wrap' }}>
+                        <div>
+                            <p className='title_2'> <i class="fa-solid fa-location-dot"></i> Address</p>
+                            <p className='secondaryText'>Room No. 228 <br />
+                                Department of Civil Engineering <br />
+                                Indian Institute of Technology, Roorkee <br />
+                                Roorkee-247667 Distt: Haridwar <br />
+                                Uttarakhand, INDIA</p>
+                        </div>
+                        {/* <br /> */}
+                        <div>
 
-                        <p className='title_2'> <i class="fa-solid fa-location-dot"></i> Address</p>
-                        <p className='secondaryText'>Room No. 228 <br />
-                            Department of Civil Engineering <br />
-                            Indian Institute of Technology, Roorkee <br />
-                            Roorkee-247667 Distt: Haridwar <br />
-                            Uttarakhand, INDIA</p>
-                        <br />
-                        <p className='title_2'> <i class="fa-solid fa-phone"></i> Contact</p>
-                        <p className='secondaryText'>Tel: +91-1332-284319, 285219 <br />
-                            (O) 91-1332-284951 <br />
-                            (R) +91-1332-286951 (IP) <br />
-                            Email: vinnarasi@ce.iitr.ac.in</p>
+                            <p className='title_2'> <i class="fa-solid fa-phone"></i> Contact</p>
+                            <p className='secondaryText' style={{ textAlign: 'start' }}>
+                                (O) 91-1332-284951 <br />
+                                (R) +91-1332-286951 (IP) <br />
+                                <i class="fa-solid fa-envelope"></i> vinnarasi@ce.iitr.ac.in
+                            </p>
+                        </div>
                     </div>
-                    <div style={{ width:'min(800px,100%)'}}>
+                    <div style={{ width: 'min(600px,100%)' }}>
                         <img style={{ maxWidth: '100%', borderRadius: '20px', boxShadow: '0 0 10px grey' }} src={require("../assets/images/ce_iitr.jpg")} alt="" />
                     </div>
                 </div>

@@ -5,6 +5,7 @@ import Member_template from './Member_template'
 import DevTemplate from './dev_template'
 
 export default function Team() {
+    
     return (
         <div>
             <div className='teamContainer'>

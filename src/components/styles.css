@@ -201,6 +201,15 @@
     background-color: #9f2042a2;
     backdrop-filter: blur(10px);
     color: var(--background);
+    animation: slide 0.6s ease-in-out;
+}
+@keyframes slide {
+    from{
+        right: -300px;
+    }
+    to{
+        right: 0;
+    }
 }
 .sideNavlink{
     padding: 10px 0;

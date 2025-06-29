@@ -96,11 +96,12 @@ export default function LandingPage() {
                         <a style={{ color: "black" }} href="https://floodlist.com/tag/india" target='_blank'><i class="fa-solid fa-square-arrow-up-right"></i> Source/Credit : https://floodlist.com/tag/india </a>
                         <br /> <br />*/}
                     <div style={{ width: 'min(800px,100%)', borderRadius: '5px' }}>
-                        <iframe width="100%" height="400px" style={{ border: '2px solid black', padding: 0, borderRadius: '5px' }}  src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=4&overlay=temp&product=ecmwf&level=surface&lat=23.166&lon=81.205" frameborder="0"></iframe>
+                        <iframe width="100%" height="400px" style={{ border: '2px solid black', padding: 0, borderRadius: '5px' }} src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=4&overlay=temp&product=ecmwf&level=surface&lat=23.166&lon=81.205" frameborder="0"></iframe>
                         <a style={{ color: "black" }} href="https://www.windy.com/-Temperature-temp?temp,23.725,78.776,5" target='_blank'><i class="fa-solid fa-square-arrow-up-right"></i> Source/Credit : windy.com </a>
                     </div>
                     <div style={{ width: 'min(400px,100%)' }}>
-                        <p className='normalText' style={{ paddingBottom: '10px', fontWeight: '500' }}> A publicly accessible web-based tool provides design flood characteristics, including peak flow, flood volume, and flood duration, for both stationary and non-stationary conditions across India. It offers univariate and bivariate return level estimates for historical and future climate scenarios. Users can select specific streamflow gauging stations within various Indian river basins to view return level data. By using the tool, users agree to its Terms of Use.</p>
+                        <p className='normalText' style={{ paddingBottom: '10px', fontWeight: '500',textAlign:'justify' }}>Currently Historical Data for design flood is available,
+                            Design flood charecterstices for Future Climate Scenario is under working.<hr />  <span style={{color:'purple'}}>Sign up using your google account to explore further.</span> <br /> <hr /> You can see interactive plots for different charecterstics of design flood for stations present (both basin wise & state wise sorted), <b> Univariate(stationary & non-stationary) and Bivariate(or & and).</b> <br /> <hr /> <span style={{color:'var(--primary)'}}>Click explore below , sign up and check out plots.</span> </p>
                         <button onClick={() => navigate('/explore')} className='btn btn-dark'><i class="fa-solid fa-square-arrow-up-right"></i> Explore</button>
 
                     </div>
