@@ -235,7 +235,7 @@ export default function MapComponent() {
             mode === "State" ?
               <>
                 <GeoJSON data={india} style={{ color: 'green', weight: 2 }} />
-                <ChangeCenter key={center} center={center} zoom={zoom} />
+                <ChangeCenter center={center} zoom={zoom} />
                 <Marker position={center}>
                   <Popup>
                     {state}
