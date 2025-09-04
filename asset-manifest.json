@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Intern_Project_Map_Basin/static/css/main.0e74202c.css",
-    "main.js": "/Intern_Project_Map_Basin/static/js/main.62f94d42.js",
+    "main.js": "/Intern_Project_Map_Basin/static/js/main.d39e2d72.js",
     "static/js/453.d1a86e40.chunk.js": "/Intern_Project_Map_Basin/static/js/453.d1a86e40.chunk.js",
     "static/media/historic_flood.png": "/Intern_Project_Map_Basin/static/media/historic_flood.65549c4996e714cefa79.png",
     "static/media/ce_iitr.jpg": "/Intern_Project_Map_Basin/static/media/ce_iitr.7958c8c724ab2fe26219.jpg",
@@ -50,11 +50,11 @@
     "static/media/nrf_logo.png": "/Intern_Project_Map_Basin/static/media/nrf_logo.4ad118653e600abd5197.png",
     "index.html": "/Intern_Project_Map_Basin/index.html",
     "main.0e74202c.css.map": "/Intern_Project_Map_Basin/static/css/main.0e74202c.css.map",
-    "main.62f94d42.js.map": "/Intern_Project_Map_Basin/static/js/main.62f94d42.js.map",
+    "main.d39e2d72.js.map": "/Intern_Project_Map_Basin/static/js/main.d39e2d72.js.map",
     "453.d1a86e40.chunk.js.map": "/Intern_Project_Map_Basin/static/js/453.d1a86e40.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0e74202c.css",
-    "static/js/main.62f94d42.js"
+    "static/js/main.d39e2d72.js"
   ]
 }
